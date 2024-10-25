@@ -1,2 +1,2 @@
 # Hello World
-android project for team hello world
+android project for team Hello World
