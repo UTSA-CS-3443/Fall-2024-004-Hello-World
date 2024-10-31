@@ -6,4 +6,4 @@ android project for team Hello World
 - [Carlos martinez](https://github.com/Cima9642)
 - [Jakob Lopez](https://github.com/JakTheMan)
 - [Cole Frankland](https://github.com/Nullctipus)
-- [Joseph Baca](https://github.com/idontknowkarate)
+- [Joseph Baca](https://github.com/idontknowkarate) 
