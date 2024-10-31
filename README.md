@@ -5,5 +5,5 @@ android project for team Hello World
 - [Steve Wheeler](https://github.com/itswheeler)
 - [Carlos martinez](https://github.com/Cima9642)
 - [Jakob Lopez](https://github.com/JakTheMan)
-- [Cole Frankland](https://github.com/Nullctipus)
+- [Cole Frankland](https://github.com/Nullctipus) 
 - [Joseph Baca](https://github.com/idontknowkarate) 
