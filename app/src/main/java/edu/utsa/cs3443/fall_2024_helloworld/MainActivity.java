@@ -1,5 +1,6 @@
 package edu.utsa.cs3443.fall_2024_helloworld;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -32,6 +33,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+
+        if(v.getTag() == calNames[0]){
+
+           // String passedValue = bank.getCurrentQuestionText() + ": " + String.valueOf(bank.getCurrentQuestionAnswer());
+            Intent intent = new Intent(this, Mortgage_Calc.class);
+            //intent.putExtra(key,passedValue);
+            startActivity(intent);
+
+        }
+        if(v.getTag() == calNames[1]){
+
+            // String passedValue = bank.getCurrentQuestionText() + ": " + String.valueOf(bank.getCurrentQuestionAnswer());
+            Intent intent = new Intent(this, Auto_Loan_Calc.class);
+            //intent.putExtra(key,passedValue);
+            startActivity(intent);
+
+        }
+        if(v.getTag() == calNames[2]){
+
+            // String passedValue = bank.getCurrentQuestionText() + ": " + String.valueOf(bank.getCurrentQuestionAnswer());
+            Intent intent = new Intent(this, Interest_Calc.class);
+            //intent.putExtra(key,passedValue);
+            startActivity(intent);
+
+        }
     }
 
     private void addButton(String buttonName) {
