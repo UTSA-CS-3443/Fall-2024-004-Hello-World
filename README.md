@@ -17,8 +17,8 @@ Android project for team: Hello World. This application is meant to serve as a c
    - Total cost of new car
    - Extra monthly amount
 
-7. Misc loan calculator
-  - TBD
+> Misc loan calculator
+>  TBD
 
 
 ### Authors
