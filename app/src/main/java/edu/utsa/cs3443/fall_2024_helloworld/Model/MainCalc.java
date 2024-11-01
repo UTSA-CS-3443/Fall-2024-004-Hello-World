@@ -6,6 +6,15 @@ package edu.utsa.cs3443.fall_2024_helloworld.Model;
  * Authors: Collaborative effort of the team
  */
 public class MainCalc {
+
+    private static MainCalc _instance;
+    public static MainCalc Instance(){
+        if(_instance == null){
+            _instance = new MainCalc();
+        }
+        return _instance;
+    }
+
     /**
      *
      * @param annualRate APR
