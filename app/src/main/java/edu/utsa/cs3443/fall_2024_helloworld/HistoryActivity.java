@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
+
 public class HistoryActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
@@ -19,7 +21,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_history);
         setUpButton(R.id.backbutton);
-
+        HistoryManager.Instance().Load(getApplicationContext().getFilesDir());
     }
 
     private void setUpButton(int buttonID){
@@ -35,5 +37,11 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
             startActivity(intent);
         }
 
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        HistoryManager.Instance().Save(getApplicationContext().getFilesDir());
     }
 }
