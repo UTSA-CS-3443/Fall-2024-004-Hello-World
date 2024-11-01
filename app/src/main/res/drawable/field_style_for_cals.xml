@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- i might change the colors later depending on how im feeling lmaoo -->
+    <!-- shadow layer -->
+    <item>
+        <shape>
+            <solid android:color="#F8F8F8" /> <!-- light gray shadow -->
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+    <!-- main field layer faded highlight -->
+    <item android:top="2dp" android:left="2dp"> <!-- offset to have the shadow effect -->
+        <shape>
+            <solid android:color="#EAE0D5" /> <!-- warm beige background -->
+            <stroke android:width="1dp" android:color="#F8F8F8" /> <!-- medium gray border -->
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+    <!-- highlight layer -->
+    <item android:top="5dp" android:left="5dp">
+        <shape>
+            <solid android:color="#50262121" /> <!-- kinda transparent dark gray for highlight -->
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+</layer-list>
+

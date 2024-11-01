@@ -1,7 +1,9 @@
+<!-- i just added '\t' so it doesnt interfere with the border -->
 <resources>
+
     <string name="app_name">MultiCalc</string>
-    <string name="loan_amount">Loan Amount:</string>
-    <string name="loan_ARP">Loan APR:</string>
-    <string name="loan_Years">Length of Loan (years):</string>
+    <string name="loan_amount">\tLoan Amount:</string>
+    <string name="loan_ARP">\tLoan APR:</string>
+    <string name="loan_Years">\tLength of Loan (years):</string>
 
 </resources>
