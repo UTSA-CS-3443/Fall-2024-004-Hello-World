@@ -9,9 +9,6 @@ import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -37,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getTag() == calNames[0]){
 
            // String passedValue = bank.getCurrentQuestionText() + ": " + String.valueOf(bank.getCurrentQuestionAnswer());
-            Intent intent = new Intent(this, Mortgage_Calc.class);
+            Intent intent = new Intent(this, MortgageCalcActivity.class);
             //intent.putExtra(key,passedValue);
             startActivity(intent);
 
@@ -45,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getTag() == calNames[1]){
 
             // String passedValue = bank.getCurrentQuestionText() + ": " + String.valueOf(bank.getCurrentQuestionAnswer());
-            Intent intent = new Intent(this, Auto_Loan_Calc.class);
+            Intent intent = new Intent(this, AutoLoanCalcActivity.class);
             //intent.putExtra(key,passedValue);
             startActivity(intent);
 
@@ -53,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getTag() == calNames[2]){
 
             // String passedValue = bank.getCurrentQuestionText() + ": " + String.valueOf(bank.getCurrentQuestionAnswer());
-            Intent intent = new Intent(this, Interest_Calc.class);
+            Intent intent = new Intent(this, InterestCalcActivity.class);
             //intent.putExtra(key,passedValue);
             startActivity(intent);
 

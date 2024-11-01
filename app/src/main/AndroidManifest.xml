@@ -16,13 +16,13 @@
             android:name=".HistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Interest_Calc"
+            android:name=".InterestCalcActivity"
             android:exported="false" />
         <activity
-            android:name=".Auto_Loan_Calc"
+            android:name=".AutoLoanCalcActivity"
             android:exported="false" />
         <activity
-            android:name=".Mortgage_Calc"
+            android:name=".MortgageCalcActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

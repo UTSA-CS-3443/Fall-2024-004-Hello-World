@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 
-public class Mortgage_Calc extends AppCompatActivity implements View.OnClickListener {
+public class MortgageCalcActivity extends AppCompatActivity implements View.OnClickListener {
 
     int[] fields = {R.id.loanAmount,R.id.loanApr,R.id.loanYears};
     float loanAmount;
