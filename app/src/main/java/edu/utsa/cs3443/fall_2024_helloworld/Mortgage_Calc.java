@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,17 +39,15 @@ public class Mortgage_Calc extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-        if(!getTextEdit(fields[0]).equalsIgnoreCase("") && !getTextEdit(fields[1]).equalsIgnoreCase("") && !getTextEdit(fields[2]).equalsIgnoreCase("")){
-            enableButton(R.id.submit);
 
-        } else {
-            disableButton(R.id.submit);
-        }
         if(v.getId() == R.id.submit){
-            loanAmount = Float.parseFloat(getTextEdit(fields[0]));
-            loanAPR = Float.parseFloat(getTextEdit(fields[1]));
-            loanYears = Integer.parseInt(getTextEdit(fields[2]));
+            if(!getTextEdit(fields[0]).equalsIgnoreCase("") && !getTextEdit(fields[1]).equalsIgnoreCase("") && !getTextEdit(fields[2]).equalsIgnoreCase("")) {
+                loanAmount = Float.parseFloat(getTextEdit(fields[0]));
+                loanAPR = Float.parseFloat(getTextEdit(fields[1]));
+                loanYears = Integer.parseInt(getTextEdit(fields[2]));
 
+                Toast.makeText(v.getContext(), String.valueOf(loanAmount/loanYears),Toast.LENGTH_SHORT).show();
+            }
         }
 
 

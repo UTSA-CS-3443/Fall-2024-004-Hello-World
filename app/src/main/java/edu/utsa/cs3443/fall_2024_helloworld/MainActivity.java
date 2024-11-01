@@ -58,6 +58,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
 
         }
+
+        if(v.getTag() == calNames[3]){
+
+            // String passedValue = bank.getCurrentQuestionText() + ": " + String.valueOf(bank.getCurrentQuestionAnswer());
+            Intent intent = new Intent(this, HistoryActivity.class);
+            //intent.putExtra(key,passedValue);
+            startActivity(intent);
+
+        }
+
     }
 
     private void addButton(String buttonName) {
