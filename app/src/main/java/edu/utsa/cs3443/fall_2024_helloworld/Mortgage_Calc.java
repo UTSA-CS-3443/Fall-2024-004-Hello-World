@@ -37,8 +37,23 @@ public class Mortgage_Calc extends AppCompatActivity implements View.OnClickList
 
         if(v.getId() == R.id.backbutton){
             Intent intent = new Intent(this, MainActivity.class);
+            //intent.putExtra(key,passedValue);
             startActivity(intent);
         }
+        if(!getTextEdit(fields[0]).equalsIgnoreCase("") && !getTextEdit(fields[1]).equalsIgnoreCase("") && !getTextEdit(fields[2]).equalsIgnoreCase("")){
+            enableButton(R.id.submit);
+
+        } else {
+            disableButton(R.id.submit);
+        }
+        if(v.getId() == R.id.submit){
+            loanAmount = Float.parseFloat(getTextEdit(fields[0]));
+            loanAPR = Float.parseFloat(getTextEdit(fields[1]));
+            loanYears = Integer.parseInt(getTextEdit(fields[2]));
+
+        }
+
+
 
         if(v.getId() == R.id.submit){
             if(!getTextEdit(fields[0]).equalsIgnoreCase("") && !getTextEdit(fields[1]).equalsIgnoreCase("") && !getTextEdit(fields[2]).equalsIgnoreCase("")) {
