@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">MultiCalc</string>
-
+    <string name="loan_amount">Loan Amount:</string>
+    <string name="loan_ARP">Loan APR:</string>
+    <string name="loan_Years">Length of Loan (years):</string>
 
 </resources>
