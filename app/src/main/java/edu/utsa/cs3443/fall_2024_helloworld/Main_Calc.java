@@ -5,7 +5,7 @@ package edu.utsa.cs3443.fall_2024_helloworld;
  *
  * Authors: Collaborative effort of the team
  */
-public class MainCalc {
+public class Main_Calc {
     /**
      *
      * @param annualRate APR
@@ -24,5 +24,28 @@ public class MainCalc {
      */
     public double calcMortgageLoanAmount(double propertyPrice, double deposit){
         return propertyPrice - deposit;
+    }
+
+    /**
+     *
+     * @param principal Initial balance
+     * @param interestRate interest rate as a value 1<x<0
+     * @param timesCompoundedPerYear Times Compounded per year, for example 12 for monthly, or 53 for weekly
+     * @param years years
+     * @return Total after interest
+     */
+    public double calcCompoundInterest(double principal, double interestRate, int timesCompoundedPerYear, double years){
+        return Math.pow(principal*(1+interestRate/timesCompoundedPerYear),timesCompoundedPerYear*years);
+    }
+
+    /**
+     *
+     * @param principle Initial balance
+     * @param periodicInterestRate interest rate over a period
+     * @param periods number of periods
+     * @return total after interest
+     */
+    public double calcContinuousCompoundInterest(double principle, double periodicInterestRate, double periods){
+        return principle * Math.pow(Math.E,periodicInterestRate*periods);
     }
 }
