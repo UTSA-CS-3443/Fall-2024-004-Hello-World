@@ -23,7 +23,7 @@ Android project for team: Hello World. This application is meant to serve as a c
 
 ### Authors
 - [Steve Wheeler](https://github.com/itswheeler)
-- [Carlos martinez](https://github.com/Cima9642) 
+- [Carlos Martinez](https://github.com/Cima9642) 
 - [Jakob Lopez](https://github.com/JakTheMan)
 - [Cole Frankland](https://github.com/Nullctipus) 
 - [Joseph Baca](https://github.com/idontknowkarate)
