@@ -42,10 +42,10 @@ public class MainCalc {
      * @param loanYears
      * @return
      */
-    public double calcMortagePayments(float loanAmount, float loanAPR, int loanYears){
+    public double calcMortgagePayments(float loanAmount, float loanAPR, int loanYears){
         int totalPayments = loanYears * 12;
         float monthlyRate = loanAPR / 12;
-        return calcMortagePayments(loanAmount, monthlyRate, totalPayments);
+        return calcMortgagePayments(loanAmount, monthlyRate, totalPayments);
     }
 
     /**
