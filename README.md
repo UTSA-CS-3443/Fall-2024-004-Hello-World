@@ -15,7 +15,7 @@ Android project for team: Hello World. This application is meant to serve as a c
    - Down payment
    - APR
    - Total cost of new car
-   - Extra monthly amount
+   - Extra monthly amount 
 
 > Misc loan calculator
 >  TBD

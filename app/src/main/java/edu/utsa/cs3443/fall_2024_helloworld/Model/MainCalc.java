@@ -37,6 +37,19 @@ public class MainCalc {
 
     /**
      *
+     * @param loanAmount
+     * @param loanAPR
+     * @param loanYears
+     * @return
+     */
+    public double calcMortagePayments(float loanAmount, float loanAPR, int loanYears){
+        int totalPayments = loanYears * 12;
+        float monthlyRate = loanAPR / 12;
+        return calcMortagePayments(loanAmount, monthlyRate, totalPayments);
+    }
+
+    /**
+     *
      * @param principal Initial balance
      * @param interestRate interest rate as a value 1<x<0
      * @param timesCompoundedPerYear Times Compounded per year, for example 12 for monthly, or 53 for weekly
