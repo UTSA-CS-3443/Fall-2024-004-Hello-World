@@ -7,12 +7,12 @@ import java.io.Serializable;
  *
  * Authors: Collaborative effort of the team
  */
-abstract class MainCalc implements Serializable {
+abstract class Calculation implements Serializable {
 
-    private static MainCalc _instance;
-    public static MainCalc Instance(){
+    private static Calculation _instance;
+    public static Calculation Instance(){
         if(_instance == null){
-            _instance = new MainCalc();
+            _instance = new Calculation();
         }
         return _instance;
     }
