@@ -2,8 +2,10 @@ package edu.utsa.cs3443.fall_2024_helloworld;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +13,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryItem;
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
 
 public class HistoryActivity extends AppCompatActivity implements View.OnClickListener{
-
+    Button newBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,5 +46,18 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
     public void onPause(){
         super.onPause();
         HistoryManager.Instance().Save(getApplicationContext().getFilesDir());
+    }
+
+    private void addButton(HistoryItem historyItem) {
+        LinearLayout layout = findViewById(R.id.HistorybuttonLayout);
+        int style = R.style.button;
+
+        newBtn = new Button(new ContextThemeWrapper(this, style), null, style);
+        newBtn.setText(historyItem.getCalculationButtonTitle());
+        newBtn.setHeight(260);
+        newBtn.setTag(historyItem);
+        newBtn.setOnClickListener(this);
+
+        layout.addView(newBtn);
     }
 }
