@@ -2,9 +2,10 @@ package edu.utsa.cs3443.fall_2024_helloworld.model;
 
 import static java.text.NumberFormat.Field.PERCENT;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
 
-public class MortgageCalculation extends Calculation {
+public class MortgageCalculation extends Calculation implements Serializable {
 
     private static final int MONTHS_IN_YEARS = 12;
     private float loanAmount;
@@ -23,7 +24,6 @@ public class MortgageCalculation extends Calculation {
         this.monthlyPayment = calculateMonthlyPayment();
 
     }
-
 
 
     public float getLoanAmount() {
