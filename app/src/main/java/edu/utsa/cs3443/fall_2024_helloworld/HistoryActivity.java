@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryItem;
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
+import edu.utsa.cs3443.fall_2024_helloworld.model.Calculation;
 
 public class HistoryActivity extends AppCompatActivity implements View.OnClickListener{
     Button newBtn;
@@ -48,14 +49,14 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         HistoryManager.Instance().Save(getApplicationContext().getFilesDir());
     }
 
-    private void addButton(HistoryItem historyItem) {
+    private void addButton(Calculation calculation) {
         LinearLayout layout = findViewById(R.id.HistorybuttonLayout);
         int style = R.style.button;
 
         newBtn = new Button(new ContextThemeWrapper(this, style), null, style);
-        newBtn.setText(historyItem.getCalculationButtonTitle());
+        newBtn.setText(calculation.getClass().getName());
         newBtn.setHeight(260);
-        newBtn.setTag(historyItem);
+        newBtn.setTag(calculation.getClass().getName());
         newBtn.setOnClickListener(this);
 
         layout.addView(newBtn);

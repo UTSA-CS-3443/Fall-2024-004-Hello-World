@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.utsa.cs3443.fall_2024_helloworld.model.MortgageCalculation;
 
 
 public class MortgageCalcActivity extends AppCompatActivity implements View.OnClickListener {
@@ -57,11 +58,10 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
 
         if(v.getId() == R.id.submit){
             if(!getTextEdit(fields[0]).equalsIgnoreCase("") && !getTextEdit(fields[1]).equalsIgnoreCase("") && !getTextEdit(fields[2]).equalsIgnoreCase("")) {
-                loanAmount = Float.parseFloat(getTextEdit(fields[0]));
-                loanAPR = Float.parseFloat(getTextEdit(fields[1]));
-                loanYears = Integer.parseInt(getTextEdit(fields[2]));
+               MortgageCalculation mCalc = new MortgageCalculation(Float.parseFloat(getTextEdit(fields[0])),Float.parseFloat(getTextEdit(fields[1])),Integer.parseInt(getTextEdit(fields[2])));
 
-                Toast.makeText(v.getContext(), String.valueOf(loanAmount/loanYears),Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(v.getContext(), mCalc.getMonthlyPayment(),Toast.LENGTH_SHORT).show();
             }
         }
 

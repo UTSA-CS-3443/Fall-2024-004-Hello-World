@@ -1,4 +1,4 @@
-package edu.utsa.cs3443.fall_2024_helloworld.Model;
+package edu.utsa.cs3443.fall_2024_helloworld.model;
 
 import java.io.Serializable;
 
@@ -7,15 +7,16 @@ import java.io.Serializable;
  *
  * Authors: Collaborative effort of the team
  */
-abstract class Calculation implements Serializable {
+public abstract class Calculation implements Serializable {
+//    Abstract class cannot be instantiated
 
-    private static Calculation _instance;
-    public static Calculation Instance(){
-        if(_instance == null){
-            _instance = new Calculation();
-        }
-        return _instance;
-    }
+//    private static Calculation _instance;
+//    public static Calculation Instance(){
+//        if(_instance == null){
+//            _instance = new Calculation();
+//        }
+//        return _instance;
+//    }
 
     /**
      *
