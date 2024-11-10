@@ -2,8 +2,28 @@
 <resources>
 
     <string name="app_name">MultiCalc</string>
+
+    <!-- mortgage -->
     <string name="loan_amount">\tLoan Amount:</string>
     <string name="loan_ARP">\tLoan APR:</string>
     <string name="loan_Years">\tLength of Loan (years):</string>
+    <string name="deposit">\tDeposit:</string>
+    <string name="property_taxes">\tProperty Taxes:</string>
+    <string name="insurance">\tInsurance:</string>
+    <string name="pmi">\tPMI:</string>
+    <string name="extra_payments">\tExtra Payments:</string>
+    <string name="total_interest_paid">\tTotal Interest Paid:</string>
+
+    <!-- auto loan -->
+    <string name="trade_in_value">\tTrade In Value:</string>
+    <string name="down_payment">\tDown Payment:</string>
+    <string name="ARP">\tAPR:</string>
+    <string name="total_cost_new_car">\tTotal Cost Of A New Car:</string>
+    <string name="extra_monthly_amount">\tExtra Monthly Amount:</string>
+
+    <!-- inerest -->
+    <string name="curr_bal">\tCurrent Balance:</string>
+    <string name="MPA">\tMonthy Payment Amount:</string>
+    <string name="credit_apr">\tAPR (%):</string>
 
 </resources>

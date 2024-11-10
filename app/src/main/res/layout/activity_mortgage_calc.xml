@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
@@ -15,6 +16,7 @@
     tools:contex=".MainActivity"
     tools:layout_editor_absoluteX="1dp">
 
+    <!-- needs a scroll wheel -->
 
     <ImageView
         android:id="@+id/imageView"
@@ -28,7 +30,9 @@
         android:layout_width="match_parent"
         android:layout_height="573dp"
         android:layout_weight=".5"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="50dp"
+        android:paddingTop="10dp">
 
         <EditText
             android:id="@+id/loanAmount"
@@ -62,6 +66,74 @@
             android:inputType="number"
             android:paddingLeft="15dp"
             android:textStyle="bold" />
+
+        <!-- new feilds -->
+        <EditText
+            android:id="@+id/deposit"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/deposit"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/propertyTaxes"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/property_taxes"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/insurance"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/insurance"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/pmi"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/pmi"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/extraPayments"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/extra_payments"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/totalInterestPaid"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/total_interest_paid"
+            android:inputType="none"
+            android:paddingLeft="15dp"
+            android:textStyle="bold"
+            android:enabled="false" /> <!-- display only delete if interaction is needed -->
 
     </LinearLayout>
 

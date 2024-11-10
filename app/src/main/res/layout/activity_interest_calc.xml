@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
@@ -15,7 +16,6 @@
     tools:contex=".MainActivity"
     tools:layout_editor_absoluteX="1dp">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="170dp"
@@ -26,30 +26,62 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="573dp"
+        android:layout_height="510dp"
         android:layout_weight=".5"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="50dp"
+        android:paddingTop="10dp">
 
+        <EditText
+            android:id="@+id/currentBalance"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/curr_bal"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/monthlyPayment"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/MPA"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/creditApr"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/credit_apr"
+            android:inputType="number"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/backbutton"
+            style="@style/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_weight=".5"
+            android:text="Back" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/backbutton"
-        style="@style/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_weight=".5"
-        android:text="Back" />
 
 
 </LinearLayout>

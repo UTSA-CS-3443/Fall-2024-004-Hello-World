@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
@@ -15,7 +16,6 @@
     tools:contex=".MainActivity"
     tools:layout_editor_absoluteX="1dp">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="170dp"
@@ -26,30 +26,81 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="573dp"
+        android:layout_height="510dp"
         android:layout_weight=".5"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="50dp">
 
+        <EditText
+            android:id="@+id/tradeInValue"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/trade_in_value"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/downPayment"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:hint="@string/down_payment"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/loanAPR"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:hint="@string/ARP"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/totalCost"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:hint="@string/total_cost_new_car"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/extraMonthlyAmount"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:hint="@string/extra_monthly_amount"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
+
+    <!-- the button kinda wonky -->
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
-
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/backbutton"
         style="@style/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
+        android:layout_gravity="bottom|right"
         android:layout_weight=".5"
         android:text="Back" />
 
+    </LinearLayout>
 
 </LinearLayout>
