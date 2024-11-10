@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.NumberFormat;
+
 import edu.utsa.cs3443.fall_2024_helloworld.model.MortgageCalculation;
 
 
@@ -60,8 +62,8 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
             if(!getTextEdit(fields[0]).equalsIgnoreCase("") && !getTextEdit(fields[1]).equalsIgnoreCase("") && !getTextEdit(fields[2]).equalsIgnoreCase("")) {
                MortgageCalculation mCalc = new MortgageCalculation(Float.parseFloat(getTextEdit(fields[0])),Float.parseFloat(getTextEdit(fields[1])),Integer.parseInt(getTextEdit(fields[2])));
 
-
-                Toast.makeText(v.getContext(), mCalc.getMonthlyPayment(),Toast.LENGTH_SHORT).show();
+                String mPaymentsFormatted = NumberFormat.getCurrencyInstance().format(mCalc.getTotalCostOfMortgage());
+                Toast.makeText(v.getContext(), mPaymentsFormatted,Toast.LENGTH_SHORT).show();
             }
         }
 

@@ -34,10 +34,11 @@
             android:id="@+id/loanAmount"
             android:layout_width="match_parent"
             android:layout_height="88dp"
-            android:ems="10"
             android:background="@drawable/field_style_for_cals"
-            android:inputType="numberDecimal"
+            android:ems="10"
             android:hint="@string/loan_amount"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
             android:textStyle="bold" /> <!-- added bold for the buttons for ez read -->
 
         <EditText
@@ -46,8 +47,9 @@
             android:layout_height="72dp"
             android:background="@drawable/field_style_for_cals"
             android:ems="10"
-            android:inputType="numberDecimal"
             android:hint="@string/loan_ARP"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
             android:textStyle="bold" />
 
         <EditText
@@ -58,6 +60,7 @@
             android:ems="10"
             android:hint="@string/loan_Years"
             android:inputType="number"
+            android:paddingLeft="15dp"
             android:textStyle="bold" />
 
     </LinearLayout>
