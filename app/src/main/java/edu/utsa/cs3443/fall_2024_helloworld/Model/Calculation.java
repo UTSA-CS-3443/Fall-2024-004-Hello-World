@@ -1,16 +1,18 @@
 package edu.utsa.cs3443.fall_2024_helloworld.Model;
 
+import java.io.Serializable;
+
 /** This class is meant to server as a foundation class where other calculator class
  * will extend from.
  *
  * Authors: Collaborative effort of the team
  */
-public class MainCalc {
+abstract class Calculation implements Serializable {
 
-    private static MainCalc _instance;
-    public static MainCalc Instance(){
+    private static Calculation _instance;
+    public static Calculation Instance(){
         if(_instance == null){
-            _instance = new MainCalc();
+            _instance = new Calculation();
         }
         return _instance;
     }
