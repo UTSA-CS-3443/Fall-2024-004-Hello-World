@@ -21,8 +21,27 @@ public class MortgageCalculation extends Calculation implements Serializable {
     private double totalInterestPaid;
     private double totalCostOfMortgage;
 
+    public int getLoanYears() {
+        return loanYears;
+    }
 
-    public MortgageCalculation(float loanAmount, float loanAPR, int loanYears,float depositAmount,float propertyTaxes,float insurance,float pmi   ) {
+    public float getDepositAmount() {
+        return depositAmount;
+    }
+
+    public float getPropertyTaxes() {
+        return propertyTaxes;
+    }
+
+    public float getInsurance() {
+        return insurance;
+    }
+
+    public float getPmi() {
+        return pmi;
+    }
+
+    public MortgageCalculation(float loanAmount, float loanAPR, int loanYears, float depositAmount, float propertyTaxes, float insurance, float pmi   ) {
         this.loanAmount = loanAmount;
         this.loanAPR = loanAPR;
         this.loanYears = loanYears;
