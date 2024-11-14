@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "edu.utsa.cs3443.fall_2024_helloworld"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "edu.utsa.cs3443.fall_2024_helloworld"
