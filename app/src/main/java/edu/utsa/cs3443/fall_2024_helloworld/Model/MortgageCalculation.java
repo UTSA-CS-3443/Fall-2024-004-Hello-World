@@ -11,17 +11,30 @@ public class MortgageCalculation extends Calculation implements Serializable {
     private float loanAmount;
     private float loanAPR ;
     private int  loanYears;
+    private float depositAmount;
+    private float propertyTaxes;
+    private float insurance;
+    private float pmi;
     private double monthlyInterestRate;
     private int numberOfPayments;
-    private String monthlyPayment;
+    private Double monthlyPayment;
+    private double totalInterestPaid;
+    private double totalCostOfMortgage;
 
-    public MortgageCalculation(float loanAmount, float loanAPR, int loanYears) {
+
+    public MortgageCalculation(float loanAmount, float loanAPR, int loanYears,float depositAmount,float propertyTaxes,float insurance,float pmi   ) {
         this.loanAmount = loanAmount;
         this.loanAPR = loanAPR;
         this.loanYears = loanYears;
+        this.depositAmount = depositAmount;
+        this.propertyTaxes = propertyTaxes;
+        this.insurance = insurance;
+        this.pmi = pmi;
         this.monthlyInterestRate = loanAPR / 100 / MONTHS_IN_YEARS;
         this.numberOfPayments = loanYears * MONTHS_IN_YEARS;
         this.monthlyPayment = calculateMonthlyPayment();
+        this.totalInterestPaid = (monthlyPayment * numberOfPayments) - loanAmount;
+        this.totalCostOfMortgage = totalInterestPaid + loanAmount;
 
     }
 
@@ -51,20 +64,25 @@ public class MortgageCalculation extends Calculation implements Serializable {
     }
 
 
-    public void setMonthlyPayments(String monthlyPayment) {
+    public void setMonthlyPayments(Double monthlyPayment) {
         this.monthlyPayment = monthlyPayment;
     }
 
-    public String getMonthlyPayment() {
+    public Double getMonthlyPayment() {
         return monthlyPayment;
     }
 
-    public String calculateMonthlyPayment() {
+    public double getTotalCostOfMortgage() {
+        return totalCostOfMortgage;
+    }
+
+    public Double calculateMonthlyPayment() {
 
         double mathPower = Math.pow(1 + monthlyInterestRate, numberOfPayments);
-        double mPayments= loanAmount * (monthlyInterestRate * mathPower / (mathPower - 1));
+        double otherMonthlyCosts = ((propertyTaxes + insurance) / 12) + pmi;
+        double mPayments = (loanAmount - depositAmount) * (monthlyInterestRate * mathPower / (mathPower - 1));
 
-        return NumberFormat.getCurrencyInstance().format(mPayments);
+        return mPayments + otherMonthlyCosts;
 
     }
 
