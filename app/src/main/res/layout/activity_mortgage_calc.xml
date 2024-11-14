@@ -66,7 +66,7 @@
             android:background="@drawable/field_style_for_cals"
             android:ems="10"
             android:hint="@string/loan_Years"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingLeft="15dp"
             android:textStyle="bold" />
 
@@ -133,7 +133,7 @@
             android:background="@drawable/field_style_for_cals"
             android:ems="10"
             android:hint="@string/total_interest_paid"
-            android:inputType="none"
+            android:inputType="numberDecimal"
             android:paddingLeft="15dp"
             android:textStyle="bold"
             android:enabled="false" /> <!-- display only delete if interaction is needed -->

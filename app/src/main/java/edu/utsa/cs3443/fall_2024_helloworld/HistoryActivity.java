@@ -29,10 +29,12 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_history);
         setUpButton(R.id.backbutton);
         HistoryManager.Instance().Load(getApplicationContext().getFilesDir());
-        int index = 0;
-        for(Calculation c : MainActivity.getHistoryManager().getHistoryItems()){
-            addButton(c,index);
-            index++;
+        if( MainActivity.getHistoryManager() != null) {
+            int index = 0;
+            for (Calculation c : MainActivity.getHistoryManager().getHistoryItems()) {
+                addButton(c, index);
+                index++;
+            }
         }
     }
 
