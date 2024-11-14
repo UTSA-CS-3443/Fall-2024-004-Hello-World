@@ -41,8 +41,6 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
             setField(fields[4],calculation.getPropertyTaxes());
             setField(fields[5],calculation.getInsurance());
             setField(fields[6],calculation.getPmi());
-
-
         }
 
 

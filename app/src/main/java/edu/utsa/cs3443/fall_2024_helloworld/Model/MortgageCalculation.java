@@ -34,9 +34,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
         return insurance;
     }
 
-    public double getPmi() {
-        return pmi;
-    }
+    public double getPmi() {return pmi;}
 
     public MortgageCalculation(double loanAmount, double loanAPR, double loanYears, double depositAmount, double propertyTaxes, double insurance, double pmi   ) {
         this.loanAmount = loanAmount;
