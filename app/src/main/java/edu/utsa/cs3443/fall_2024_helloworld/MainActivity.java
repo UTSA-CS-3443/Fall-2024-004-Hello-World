@@ -10,24 +10,15 @@ import android.widget.LinearLayout;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button newBtn;
     String[] calNames = {"Mortgage Calculator", "Auto Loan Calculator", "Interest Calculator", "Recent Calculations"};
-    static HistoryManager history;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        if(getHistoryManager() == null){
-            history = new HistoryManager();
-        }
-
-
-
         for(String cal : calNames){
             addButton(cal);
         }
@@ -84,10 +75,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         newBtn.setOnClickListener(this);
 
         layout.addView(newBtn);
-    }
-
-    public static HistoryManager getHistoryManager(){
-        return history;
     }
 
 }
