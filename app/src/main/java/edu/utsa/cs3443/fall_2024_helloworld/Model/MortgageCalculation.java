@@ -8,40 +8,40 @@ import java.text.NumberFormat;
 public class MortgageCalculation extends Calculation implements Serializable {
 
     private static final int MONTHS_IN_YEARS = 12;
-    private float loanAmount;
-    private float loanAPR ;
-    private int  loanYears;
-    private float depositAmount;
-    private float propertyTaxes;
-    private float insurance;
-    private float pmi;
+    private double loanAmount;
+    private double loanAPR ;
+    private double  loanYears;
+    private double depositAmount;
+    private double propertyTaxes;
+    private double insurance;
+    private double pmi;
     private double monthlyInterestRate;
-    private int numberOfPayments;
-    private Double monthlyPayment;
+    private double numberOfPayments;
+    private double monthlyPayment;
     private double totalInterestPaid;
     private double totalCostOfMortgage;
 
-    public int getLoanYears() {
+    public double getLoanYears() {
         return loanYears;
     }
 
-    public float getDepositAmount() {
+    public double getDepositAmount() {
         return depositAmount;
     }
 
-    public float getPropertyTaxes() {
+    public double getPropertyTaxes() {
         return propertyTaxes;
     }
 
-    public float getInsurance() {
+    public double getInsurance() {
         return insurance;
     }
 
-    public float getPmi() {
+    public double getPmi() {
         return pmi;
     }
 
-    public MortgageCalculation(float loanAmount, float loanAPR, int loanYears, float depositAmount, float propertyTaxes, float insurance, float pmi   ) {
+    public MortgageCalculation(double loanAmount, double loanAPR, double loanYears, double depositAmount, double propertyTaxes, double insurance, double pmi   ) {
         this.loanAmount = loanAmount;
         this.loanAPR = loanAPR;
         this.loanYears = loanYears;
@@ -58,7 +58,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
     }
 
 
-    public float getLoanAmount() {
+    public double getLoanAmount() {
         return loanAmount;
     }
 
@@ -66,7 +66,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
         this.loanAmount = loanAmount;
     }
 
-    public float getLoanAPR() {
+    public double getLoanAPR() {
         return loanAPR;
     }
 
@@ -74,7 +74,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
         this.loanAPR = loanAPR;
     }
 
-    public int getPrivateloanYears() {
+    public double getPrivateloanYears() {
         return loanYears;
     }
 
@@ -87,7 +87,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
         this.monthlyPayment = monthlyPayment;
     }
 
-    public Double getMonthlyPayment() {
+    public double getMonthlyPayment() {
         return monthlyPayment;
     }
 
@@ -95,7 +95,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
         return totalCostOfMortgage;
     }
 
-    public Double calculateMonthlyPayment() {
+    public double calculateMonthlyPayment() {
 
         double mathPower = Math.pow(1 + monthlyInterestRate, numberOfPayments);
         double otherMonthlyCosts = ((propertyTaxes + insurance) / 12) + pmi;
