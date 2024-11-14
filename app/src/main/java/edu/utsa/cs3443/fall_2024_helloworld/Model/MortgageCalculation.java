@@ -1,9 +1,6 @@
-package edu.utsa.cs3443.fall_2024_helloworld.model;
-
-import static java.text.NumberFormat.Field.PERCENT;
+package edu.utsa.cs3443.fall_2024_helloworld.Model;
 
 import java.io.Serializable;
-import java.text.NumberFormat;
 
 public class MortgageCalculation extends Calculation implements Serializable {
 

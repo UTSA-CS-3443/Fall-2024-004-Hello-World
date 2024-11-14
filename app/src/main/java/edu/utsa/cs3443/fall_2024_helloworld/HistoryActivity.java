@@ -1,9 +1,7 @@
 package edu.utsa.cs3443.fall_2024_helloworld;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
@@ -11,14 +9,9 @@ import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryItem;
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
-import edu.utsa.cs3443.fall_2024_helloworld.model.Calculation;
-import edu.utsa.cs3443.fall_2024_helloworld.model.MortgageCalculation;
+import edu.utsa.cs3443.fall_2024_helloworld.Model.Calculation;
 
 public class HistoryActivity extends AppCompatActivity implements View.OnClickListener{
     Button newBtn;
@@ -29,12 +22,8 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_history);
         setUpButton(R.id.backbutton);
         HistoryManager.Instance().Load(getApplicationContext().getFilesDir());
-        if( MainActivity.getHistoryManager() != null) {
-            int index = 0;
-            for (Calculation c : MainActivity.getHistoryManager().getHistoryItems()) {
-                addButton(c, index);
-                index++;
-            }
+        for (int i = 0; i < HistoryManager.Instance().getHistoryItems().size(); i++) {
+            addButton(HistoryManager.Instance().getHistoryItems().get(i), i);
         }
     }
 

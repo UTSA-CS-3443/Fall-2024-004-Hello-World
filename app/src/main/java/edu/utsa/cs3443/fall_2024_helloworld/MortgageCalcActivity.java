@@ -1,7 +1,5 @@
 package edu.utsa.cs3443.fall_2024_helloworld;
 
-import static edu.utsa.cs3443.fall_2024_helloworld.MainActivity.getHistoryManager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +9,9 @@ import android.widget.Toast;
 import java.util.Arrays;
 import androidx.appcompat.app.AppCompatActivity;
 import java.text.NumberFormat;
-import edu.utsa.cs3443.fall_2024_helloworld.model.MortgageCalculation;
+
+import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
+import edu.utsa.cs3443.fall_2024_helloworld.Model.MortgageCalculation;
 
 
 public class MortgageCalcActivity extends AppCompatActivity implements View.OnClickListener {
@@ -32,7 +32,7 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
         setUpButton(R.id.submit);
         if(getIntent().hasExtra("Index")) {
             int historyIndex = Integer.parseInt(getIntent().getStringExtra("Index"));
-            MortgageCalculation calculation = (MortgageCalculation) MainActivity.getHistoryManager().getHistoryItems().get(historyIndex);
+            MortgageCalculation calculation = (MortgageCalculation) HistoryManager.Instance().getHistoryItems().get(historyIndex);
 
             setField(fields[0],calculation.getLoanAmount());
             setField(fields[1],calculation.getLoanAPR());
@@ -75,7 +75,7 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
                     MortgageCalculation mCalc = new MortgageCalculation(loanAmount, loanAPR, loanYears,loanDeposit,loanPropertyTax,loanInsurance,loanPMI);
                     String mPaymentsFormatted = NumberFormat.getCurrencyInstance().format(mCalc.getMonthlyPayment());
                     Toast.makeText(v.getContext(), mPaymentsFormatted, Toast.LENGTH_SHORT).show();
-                    getHistoryManager().addHistoryItem(mCalc);
+                    HistoryManager.Instance().addHistoryItem(mCalc);
                 } else {
                     Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 }
