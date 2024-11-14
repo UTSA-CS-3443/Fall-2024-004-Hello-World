@@ -29,7 +29,7 @@ public class HistoryManager {
     }
 
 
-
+    private boolean isLoaded = false;
 
     public ArrayList<Calculation> getHistoryItems() {
         return this.historyItems;
@@ -39,6 +39,9 @@ public class HistoryManager {
     }
 
     public void Load(File dataDir){
+        if(isLoaded)
+            return;
+        isLoaded = true;
         File historyFile = new File(dataDir,"history.bin");
         try {
             ObjectInputStream reader = new ObjectInputStream(new FileInputStream(historyFile));
@@ -46,7 +49,7 @@ public class HistoryManager {
             int count = reader.readInt();
             ArrayList<Calculation> items = new ArrayList<>(count);
             for (int i = 0; i < count; i++) {
-                items.set(i,(Calculation) reader.readObject());
+                items.add((Calculation) reader.readObject());
             }
             //In case history is added before history activity is run
             items.addAll(historyItems);
@@ -56,8 +59,10 @@ public class HistoryManager {
             // More than likely never saved before, just leave it
             return;
         } catch (IOException | ClassNotFoundException e) {
-            Log.e(TAG, "Load: ", e);
-            throw new RuntimeException(e);
+            Log.e(TAG, "Load: discarding", e);
+            //noinspection ResultOfMethodCallIgnored
+            historyFile.delete();
+
         }
 
     }
