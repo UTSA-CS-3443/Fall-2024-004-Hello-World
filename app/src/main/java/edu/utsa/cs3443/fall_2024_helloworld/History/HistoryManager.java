@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
@@ -42,22 +44,12 @@ public class HistoryManager {
     public void Load(File dataDir){
         File historyFile = new File(dataDir,"history.bin");
         try {
-            DataInputStream reader = new DataInputStream(new FileInputStream(historyFile));
+            ObjectInputStream reader = new ObjectInputStream(new FileInputStream(historyFile));
 
             int count = reader.readInt();
             ArrayList<Calculation> items = new ArrayList<>(count);
-
             for (int i = 0; i < count; i++) {
-                //TODO: replace string with index, but I need a calculator list for that
-                String name = reader.readUTF();
-                double output = reader.readDouble();
-                int inputCount = reader.readInt();
-                String[] inputs = new String[inputCount];
-                for (int j = 0; j < inputCount; j++) {
-                    inputs[j] = reader.readUTF();
-                }
-                //needs to use Serializer to create the correct objects
-                //items.add(new HistoryItem(name,output,inputs));
+                items.set(i,(Calculation) reader.readObject());
             }
             //In case history is added before history activity is run
             items.addAll(historyItems);
@@ -66,7 +58,7 @@ public class HistoryManager {
         } catch (FileNotFoundException e) {
             // More than likely never saved before, just leave it
             return;
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             Log.e(TAG, "Load: ", e);
             throw new RuntimeException(e);
         }
@@ -75,17 +67,11 @@ public class HistoryManager {
     public void Save(File dataDir){
         File historyFile = new File(dataDir,"history.bin");
         try{
-            DataOutputStream writer = new DataOutputStream(Files.newOutputStream(historyFile.toPath()));
+            ObjectOutputStream writer = new ObjectOutputStream(Files.newOutputStream(historyFile.toPath()));
             writer.writeInt(historyItems.size());
-            //needs to use serializer to save object to file
-//            for (HistoryItem item:historyItems) {
-//                writer.writeUTF(item.calculatorName);
-//                writer.writeDouble(item.output);
-//                writer.writeInt(item.inputs.length);
-//                for (String s: item.inputs) {
-//                    writer.writeUTF(s);
-//                }
-//            }
+            for (Calculation item : historyItems) {
+                writer.writeObject(item);
+            }
         }catch (IOException e){
             Log.e(TAG, "Save: ", e);
             throw new RuntimeException(e);
