@@ -1,15 +1,8 @@
 package edu.utsa.cs3443.fall_2024_helloworld;
-
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
-
-import static edu.utsa.cs3443.fall_2024_helloworld.Model.viewMethods.*;
-
-
+import static edu.utsa.cs3443.fall_2024_helloworld.Model.ViewMethods.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 import java.util.Arrays;
 import androidx.appcompat.app.AppCompatActivity;

@@ -7,7 +7,7 @@ import android.view.ViewTreeObserver;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import static edu.utsa.cs3443.fall_2024_helloworld.Model.viewMethods.*;
+import static edu.utsa.cs3443.fall_2024_helloworld.Model.ViewMethods.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

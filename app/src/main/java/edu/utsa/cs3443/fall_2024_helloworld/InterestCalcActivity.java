@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import static edu.utsa.cs3443.fall_2024_helloworld.Model.viewMethods.*;
+import static edu.utsa.cs3443.fall_2024_helloworld.Model.ViewMethods.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 

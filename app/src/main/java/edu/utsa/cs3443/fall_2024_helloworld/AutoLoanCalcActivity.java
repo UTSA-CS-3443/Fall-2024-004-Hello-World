@@ -5,16 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import static edu.utsa.cs3443.fall_2024_helloworld.Model.viewMethods.*;
+import static edu.utsa.cs3443.fall_2024_helloworld.Model.ViewMethods.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.NumberFormat;
 import java.util.Arrays;
 
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.AutoLoanCalculation;
-import edu.utsa.cs3443.fall_2024_helloworld.Model.MortgageCalculation;
 
 public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnClickListener {
     int[] fields ={R.id.tradeInValue,R.id.downPayment,R.id.loanAPR,R.id.totalCost};

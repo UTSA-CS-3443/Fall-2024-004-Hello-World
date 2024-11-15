@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import edu.utsa.cs3443.fall_2024_helloworld.R;
 
-public class viewMethods extends AppCompatActivity  {
+public class ViewMethods extends AppCompatActivity  {
 
 
 
