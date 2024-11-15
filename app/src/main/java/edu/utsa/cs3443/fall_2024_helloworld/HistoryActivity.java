@@ -31,6 +31,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_history);
         setUpButton(R.id.backbutton,this);
+        setUpButton(R.id.clearbutton,this);
         HistoryManager.Instance().Load(getApplicationContext().getFilesDir());
         for (int i = HistoryManager.Instance().getHistoryItems().size() - 1; i >= 0 ; i--) {
             addButton(HistoryManager.Instance().getHistoryItems().get(i), i);
@@ -42,12 +43,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
 
 
-        if(v.getId() == R.id.clear){
-            Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            HistoryManager.Instance().getHistoryItems().clear();
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
+
         if(v.getId() != R.id.backbutton) {
 
             Button clickedButton = (Button) v;
@@ -57,6 +53,12 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
                 intent.putExtra("Index",String.valueOf(index-1000));
                 startActivity(intent);
             }
+            if(clickedButton.getId() == R.id.clearbutton){
+                HistoryManager.Instance().getHistoryItems().clear();
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
+
 
             return;
         }

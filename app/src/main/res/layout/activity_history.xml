@@ -53,13 +53,13 @@
         <Button
             android:id="@+id/backbutton"
             style="@style/button"
-            android:layout_width="210dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:text="Back" />
 
         <Button
-            android:id="@+id/clear"
+            android:id="@+id/clearbutton"
             style="@style/button"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
