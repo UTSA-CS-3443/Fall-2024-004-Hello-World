@@ -9,16 +9,21 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import static edu.utsa.cs3443.fall_2024_helloworld.Model.viewMethods.*;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Map<String,Class<?>> buttonMap = Map.ofEntries(
-            Map.entry("Mortgage Calculator",MortgageCalcActivity.class),
-            Map.entry("Auto Loan Calculator",AutoLoanCalcActivity.class),
-            Map.entry("Interest Calculator",InterestCalcActivity.class),
-            Map.entry("Recent Calculations",HistoryActivity.class)
-    );
+    Map<String,Class<?>> buttonMap;
+
+    public MainActivity() {
+        super();
+        buttonMap = new LinkedHashMap<>();
+        buttonMap.put("Mortgage Calculator",MortgageCalcActivity.class);
+        buttonMap.put("Auto Loan Calculator",AutoLoanCalcActivity.class);
+        buttonMap.put("Interest Calculator",InterestCalcActivity.class);
+        buttonMap.put("Recent Calculations",HistoryActivity.class);
+    }
     static boolean didSplash = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
