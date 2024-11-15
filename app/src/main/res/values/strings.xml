@@ -13,6 +13,9 @@
     <string name="pmi">\tPMI:</string>
     <string name="extra_payments">\tExtra Payments:</string>
     <string name="total_interest_paid">\tTotal Interest Paid:</string>
+    <string name="total_cost_mortgage">\tTotal Cost of Mortgage:</string>
+    <string name="total_monthly_payment">\tTotal Monthly Payment:</string>
+    <string name="months_to_pay_off">\tMonths to Pay Off Mortgage:</string>
 
     <!-- auto loan -->
     <string name="trade_in_value">\tTrade In Value:</string>

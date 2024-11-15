@@ -134,6 +134,39 @@
             android:textStyle="bold"
             android:enabled="false" /> <!-- display only delete if interaction is needed -->
 
+        <EditText
+            android:id="@+id/totalCostMortgage"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/total_cost_mortgage"
+            android:paddingLeft="15dp"
+            android:textStyle="bold"
+            android:enabled="false" /> <!-- display only -->
+
+        <EditText
+            android:id="@+id/totalMonthlyPayment"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/total_monthly_payment"
+            android:paddingLeft="15dp"
+            android:textStyle="bold"
+            android:enabled="false" /> <!-- display only -->
+
+        <EditText
+            android:id="@+id/monthsToPayOff"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/months_to_pay_off"
+            android:paddingLeft="15dp"
+            android:textStyle="bold"
+            android:enabled="false" /> <!-- display onlly -->
+
     </LinearLayout>
 
     <LinearLayout
