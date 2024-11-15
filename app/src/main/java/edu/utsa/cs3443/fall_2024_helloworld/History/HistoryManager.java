@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.Calculation;
 
 public class HistoryManager {
+    public static final int MAX_SAVED_HISTORY = 8;
     static String TAG = "HistoryManager";
     static HistoryManager _instance;
     private ArrayList<Calculation> historyItems;
@@ -70,9 +71,10 @@ public class HistoryManager {
         File historyFile = new File(dataDir,"history.bin");
         try{
             ObjectOutputStream writer = new ObjectOutputStream(Files.newOutputStream(historyFile.toPath()));
-            writer.writeInt(historyItems.size());
-            for (Calculation item : historyItems) {
-                writer.writeObject(item);
+            int count = Math.min(historyItems.size(), MAX_SAVED_HISTORY);
+            writer.writeInt(count);
+            for (int i = 0; i < count; i++) {
+                writer.writeObject(historyItems.get(i));
             }
         }catch (IOException e){
             Log.e(TAG, "Save: ", e);
