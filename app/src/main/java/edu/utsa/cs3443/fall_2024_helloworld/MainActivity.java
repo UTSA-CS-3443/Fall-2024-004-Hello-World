@@ -14,10 +14,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button newBtn;
     String[] calNames = {"Mortgage Calculator", "Auto Loan Calculator", "Interest Calculator", "Recent Calculations"};
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        androidx.core.splashscreen.SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+                try {
+            Thread.sleep(600);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         setContentView(R.layout.activity_main);
         for(String cal : calNames){
             addButton(cal);

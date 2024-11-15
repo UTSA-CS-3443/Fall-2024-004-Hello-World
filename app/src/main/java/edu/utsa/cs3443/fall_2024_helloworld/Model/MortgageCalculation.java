@@ -12,6 +12,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
     private double propertyTaxes;
     private double insurance;
     private double pmi;
+    private double extraPayment;
     private double monthlyInterestRate;
     private double numberOfPayments;
     private double monthlyPayment;

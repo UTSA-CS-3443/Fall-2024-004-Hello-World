@@ -1,4 +1,11 @@
 <resources>
+
+    <style name="SplashTheme" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">#ffffff</item>
+        <item name="windowSplashScreenAnimationDuration">1600</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/intro</item>
+        <item name="postSplashScreenTheme">@style/Theme.HelloWorld</item>
+    </style>
     <style name="button" parent="@android:style/Widget.Button">
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:textColor">#FFFFFFFF</item>

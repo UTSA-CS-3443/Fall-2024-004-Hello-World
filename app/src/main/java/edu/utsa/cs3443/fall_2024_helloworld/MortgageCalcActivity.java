@@ -16,7 +16,7 @@ import edu.utsa.cs3443.fall_2024_helloworld.Model.MortgageCalculation;
 
 public class MortgageCalcActivity extends AppCompatActivity implements View.OnClickListener {
 
-    int[] fields = {R.id.loanAmount,R.id.loanApr,R.id.loanYears,R.id.deposit,R.id.propertyTaxes,R.id.insurance,R.id.pmi};
+    int[] fields = {R.id.loanAmount,R.id.loanApr,R.id.loanYears,R.id.deposit,R.id.propertyTaxes,R.id.insurance,R.id.pmi,R.id.extraPayments};
     double loanAmount;
     double loanAPR;
     double loanYears;
@@ -24,6 +24,7 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
     double loanPropertyTax;
     double loanInsurance;
     double loanPMI;
+    double loanExtraPayment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
