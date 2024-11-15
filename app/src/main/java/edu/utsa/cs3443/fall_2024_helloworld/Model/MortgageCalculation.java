@@ -49,8 +49,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
         this.monthlyInterestRate = loanAPR / 100 / MONTHS_IN_YEARS;
         this.numberOfPayments = loanYears * MONTHS_IN_YEARS;
         this.monthlyPayment = calculateMonthlyPayment() + ((propertyTaxes + insurance) / 12) + pmi;
-//        this.totalInterestPaid = monthlyPayment * numberOfPayments - loanAmount;
-//        this.totalCostOfMortgage = totalInterestPaid + loanAmount;
+
 
     }
 
@@ -112,7 +111,6 @@ public class MortgageCalculation extends Calculation implements Serializable {
 
         return (loanAmount - depositAmount) * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments))
                 / (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
-
 
     }
 

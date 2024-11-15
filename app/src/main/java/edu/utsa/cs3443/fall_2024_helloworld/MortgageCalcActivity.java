@@ -3,12 +3,13 @@ package edu.utsa.cs3443.fall_2024_helloworld;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
+import static edu.utsa.cs3443.fall_2024_helloworld.Model.viewMethods.*;
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 import java.util.Arrays;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,23 +35,23 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mortgage_calc);
-        setUpButton(R.id.backbutton);
-        setUpButton(R.id.submit);
+        setUpButton(R.id.backbutton,this);
+        setUpButton(R.id.submit,this);
         for(int r : resultFields){
-            hideField(r);
+            hideField(r,this);
         }
         if(getIntent().hasExtra("Index")) {
             int historyIndex = Integer.parseInt(getIntent().getStringExtra("Index"));
             MortgageCalculation calculation = (MortgageCalculation) HistoryManager.Instance().getHistoryItems().get(historyIndex);
 
-            setField(fields[0],String.valueOf(calculation.getLoanAmount()));
-            setField(fields[1],String.valueOf(calculation.getLoanAPR()));
-            setField(fields[2],String.valueOf(calculation.getLoanYears()));
-            setField(fields[3],String.valueOf(calculation.getDepositAmount()));
-            setField(fields[4],String.valueOf(calculation.getPropertyTaxes()));
-            setField(fields[5],String.valueOf(calculation.getInsurance()));
-            setField(fields[6],String.valueOf(calculation.getPmi()));
-            setField(R.id.extraPayments,String.valueOf(calculation.getExtraPayment()));
+            setField(fields[0],String.valueOf(calculation.getLoanAmount()),this);
+            setField(fields[1],String.valueOf(calculation.getLoanAPR()),this);
+            setField(fields[2],String.valueOf(calculation.getLoanYears()),this);
+            setField(fields[3],String.valueOf(calculation.getDepositAmount()),this);
+            setField(fields[4],String.valueOf(calculation.getPropertyTaxes()),this);
+            setField(fields[5],String.valueOf(calculation.getInsurance()),this);
+            setField(fields[6],String.valueOf(calculation.getPmi()),this);
+            setField(R.id.extraPayments,String.valueOf(calculation.getExtraPayment()),this);
         }
 
     }
@@ -66,30 +67,30 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
 
         if(v.getId() == R.id.submit){
 
-                if (Arrays.stream(fields).noneMatch(n -> getTextEdit(n).isBlank())) {
-                    loanAmount = Double.parseDouble(getTextEdit(fields[0]));
-                    loanAPR = Double.parseDouble(getTextEdit(fields[1]));
-                    loanYears = Double.parseDouble(getTextEdit(fields[2]));
-                    loanDeposit = Double.parseDouble(getTextEdit(fields[3]));
-                    loanPropertyTax = Double.parseDouble(getTextEdit(fields[4]));
-                    loanInsurance = Double.parseDouble(getTextEdit(fields[5]));
-                    loanPMI = Double.parseDouble(getTextEdit(fields[6]));
+                if (Arrays.stream(fields).noneMatch(n -> getTextEdit(n,this).isBlank())) {
+                    loanAmount = Double.parseDouble(getTextEdit(fields[0],this));
+                    loanAPR = Double.parseDouble(getTextEdit(fields[1],this));
+                    loanYears = Double.parseDouble(getTextEdit(fields[2],this));
+                    loanDeposit = Double.parseDouble(getTextEdit(fields[3],this));
+                    loanPropertyTax = Double.parseDouble(getTextEdit(fields[4],this));
+                    loanInsurance = Double.parseDouble(getTextEdit(fields[5],this));
+                    loanPMI = Double.parseDouble(getTextEdit(fields[6],this));
                     MortgageCalculation mCalc = new MortgageCalculation(loanAmount, loanAPR, loanYears,loanDeposit,loanPropertyTax,loanInsurance,loanPMI);
-                    if(!getTextEdit(R.id.extraPayments).isBlank() ){
-                        mCalc.setExtraPayment(Double.parseDouble(getTextEdit(R.id.extraPayments)));
+                    if(!getTextEdit(R.id.extraPayments,this).isBlank() ){
+                        mCalc.setExtraPayment(Double.parseDouble(getTextEdit(R.id.extraPayments,this)));
                     }
                     mCalc.calculateExtraPayment();
                     for(int f : fields){
-                        removeField(f);
+                        removeField(f,this);
                     }
 
                     for(int r : resultFields){
-                        showField(r);
+                        showField(r,this);
                     }
-                    hideField(R.id.extraPayments);
-                    disableButton(R.id.submit);
+                    hideField(R.id.extraPayments,this);
+                    disableButton(R.id.submit,this);
                     String mPaymentsFormatted = NumberFormat.getCurrencyInstance().format(mCalc.getTotalInterestPaid());
-                    setField(R.id.totalInterestPaid,"Total Interest Paid: " + mPaymentsFormatted);
+                    setField(R.id.totalInterestPaid,"Total Interest Paid: " + mPaymentsFormatted,this);
                     HistoryManager.Instance().addHistoryItem(mCalc);
                 } else {
                     Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
@@ -101,39 +102,7 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    private void setUpButton(int buttonID){
-        Button button = findViewById(buttonID);
-        button.setOnClickListener(this);
-    }
-    private void disableButton(int buttonID){
-        Button button = findViewById(buttonID);
-        button.setEnabled(false);
-    }
 
-    private String getTextEdit(int editID){
-        EditText mEdit = findViewById(editID);
-        return mEdit.getEditableText().toString();
-    }
 
-    private void setField(int filedId, String d){
-        EditText field = findViewById(filedId);
-        field.setText(d);
-
-    }
-    private void removeField(int fieldId){
-
-        EditText editText = findViewById(fieldId);
-        ((ViewGroup) editText.getParent()).removeView(editText);
-    }
-    private void showField(int fieldId){
-
-        EditText editText = findViewById(fieldId);
-        editText.setVisibility(VISIBLE);
-    }
-    private void hideField(int fieldId){
-
-        EditText editText = findViewById(fieldId);
-        editText.setVisibility(INVISIBLE);
-    }
 
 }
