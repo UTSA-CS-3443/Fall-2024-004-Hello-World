@@ -15,7 +15,7 @@ import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.AutoLoanCalculation;
 
 public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnClickListener {
-    int[] fields ={R.id.tradeInValue,R.id.downPayment,R.id.loanAPR,R.id.totalCost};
+    int[] fields ={R.id.downPayment,R.id.loanAPR,R.id.totalCost};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +26,11 @@ public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnCl
             int historyIndex = Integer.parseInt(getIntent().getStringExtra("Index"));
             AutoLoanCalculation calculation = (AutoLoanCalculation) HistoryManager.Instance().getHistoryItems().get(historyIndex);
 
-//            setField(fields[0],String.valueOf(calculation.getTradeInValue()),this);
-//            setField(fields[1],String.valueOf(calculation.getGetDownPayment()),this);
-//            setField(fields[2],String.valueOf(calculation.getLoanAPR()),this);
-//            setField(fields[3],String.valueOf(calculation.getTotalCost()),this);
-//            setField(fields[4],String.valueOf(calculation.getExtraPayment()),this);
+            setField(R.id.tradeInValue,String.valueOf(calculation.getTradeInValue()),this);
+            setField(fields[0],String.valueOf(calculation.getDownPayment()),this);
+            setField(fields[1],String.valueOf(calculation.getLoanARP()),this);
+            setField(fields[2],String.valueOf(calculation.getTotalCost()),this);
+            setField(R.id.extraMonthlyAmount,String.valueOf(calculation.getExtraPayment()),this);
 
         }
 
@@ -46,16 +46,18 @@ public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnCl
         if(v.getId() == R.id.submit){
 
             if (Arrays.stream(fields).noneMatch(n -> getTextEdit(n,this).isBlank())) {
-                double tradeInValue = Double.parseDouble(getTextEdit(fields[0],this));
-                double downPayment = Double.parseDouble(getTextEdit(fields[1],this));
-                double loanARP = Double.parseDouble(getTextEdit(fields[2],this));
-                double totalCost = Double.parseDouble(getTextEdit(fields[3],this));
-                double extraPayment = Double.parseDouble(getTextEdit(fields[4],this));
-                //AutoLoanCalculation aCalc = new AutoLoanCalculation(tradeInValue, downPayment, loanARP,totalCost,extraPayment);
+                double downPayment = Double.parseDouble(getTextEdit(fields[0],this));
+                double loanARP = Double.parseDouble(getTextEdit(fields[1],this));
+                double totalCost = Double.parseDouble(getTextEdit(fields[2],this));
+
+                AutoLoanCalculation aCalc = new AutoLoanCalculation(downPayment, loanARP,totalCost);
                 if(!getTextEdit(R.id.extraMonthlyAmount,this).isBlank() ){
-                   // aCalc.setExtraPayment(Double.parseDouble(getTextEdit(R.id.extraPayments,this)));
+                    aCalc.setExtraPayment(Double.parseDouble(getTextEdit(R.id.extraPayments,this)));
                 }
-                //HistoryManager.Instance().addHistoryItem(aCalc);
+                if(!getTextEdit(R.id.tradeInValue,this).isBlank() ){
+                    aCalc.setTradeInValue(Double.parseDouble(getTextEdit(R.id.tradeInValue,this)));
+                }
+                HistoryManager.Instance().addHistoryItem(aCalc);
             } else {
                 Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
             }

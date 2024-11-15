@@ -3,17 +3,17 @@ package edu.utsa.cs3443.fall_2024_helloworld.Model;
 import java.io.Serializable;
 
 public class AutoLoanCalculation extends Calculation implements Serializable {
-    private double tradeInValue;
-    private double downPayment;
+    private double tradeInValue = 0;
+    private double downPayment = 0;
     private double loanARP;
     private double totalCost;
-    private double extraPayment;
+    private double extraPayment = 0;
     private double loanAmount;
     private double monthlyPayment;
     private double totalInterestPaid;
     private double totalCostOfLoan;
 
-    public AutoLoanCalculation(double tradeInValue, double downPayment, double loanARP, double totalCost, double extraPayment) {
+    public AutoLoanCalculation(double downPayment, double loanARP, double totalCost) {
         this.tradeInValue = tradeInValue;
         this.downPayment = downPayment;
         this.loanARP = loanARP;
@@ -21,8 +21,36 @@ public class AutoLoanCalculation extends Calculation implements Serializable {
         this.extraPayment = extraPayment;
 
         // Calculate the loan amount after trade-in and down payment
-        this.loanAmount = totalCost - tradeInValue - downPayment;
+        this.loanAmount = totalCost;
         calculateLoanPayments();
+    }
+
+    public double getTradeInValue() {
+        return tradeInValue;
+    }
+
+    public double getDownPayment() {
+        return downPayment;
+    }
+
+    public double getLoanARP() {
+        return loanARP;
+    }
+
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    public void setExtraPayment(double extraPayment) {
+        this.extraPayment = extraPayment;
+    }
+
+    public void setTradeInValue(double tradeInValue) {
+        this.tradeInValue = tradeInValue;
+    }
+
+    public void setDownPayment(double downPayment) {
+        this.downPayment = downPayment;
     }
 
     public double getLoanAmount() {
@@ -59,7 +87,7 @@ public class AutoLoanCalculation extends Calculation implements Serializable {
 
     public void calculateExtraPayment() {
         double totalMonthlyPayment = this.monthlyPayment + extraPayment;
-        double remainingBalance = this.loanAmount;
+        double remainingBalance = this.loanAmount - this.downPayment - this.tradeInValue;
         double totalPaid = 0;
         double interestPaid = 0;
         int months = 0;
