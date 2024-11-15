@@ -67,35 +67,35 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
 
         if(v.getId() == R.id.submit){
 
-                if (Arrays.stream(fields).noneMatch(n -> getTextEdit(n,this).isBlank())) {
-                    loanAmount = Double.parseDouble(getTextEdit(fields[0],this));
-                    loanAPR = Double.parseDouble(getTextEdit(fields[1],this));
-                    loanYears = Double.parseDouble(getTextEdit(fields[2],this));
-                    loanDeposit = Double.parseDouble(getTextEdit(fields[3],this));
-                    loanPropertyTax = Double.parseDouble(getTextEdit(fields[4],this));
-                    loanInsurance = Double.parseDouble(getTextEdit(fields[5],this));
-                    loanPMI = Double.parseDouble(getTextEdit(fields[6],this));
-                    MortgageCalculation mCalc = new MortgageCalculation(loanAmount, loanAPR, loanYears,loanDeposit,loanPropertyTax,loanInsurance,loanPMI);
-                    if(!getTextEdit(R.id.extraPayments,this).isBlank() ){
-                        mCalc.setExtraPayment(Double.parseDouble(getTextEdit(R.id.extraPayments,this)));
-                    }
-                    mCalc.calculateExtraPayment();
-                    for(int f : fields){
-                        removeField(f,this);
-                    }
+            if (Arrays.stream(fields).anyMatch(n -> getTextEdit(n,this).isBlank())) {
+                Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-                    for(int r : resultFields){
-                        showField(r,this);
-                    }
-                    hideField(R.id.extraPayments,this);
-                    disableButton(R.id.submit,this);
-                    String mPaymentsFormatted = NumberFormat.getCurrencyInstance().format(mCalc.getTotalInterestPaid());
-                    setField(R.id.totalInterestPaid,"Total Interest Paid: " + mPaymentsFormatted,this);
-                    HistoryManager.Instance().addHistoryItem(mCalc);
-                } else {
-                    Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
-                }
+            loanAmount = Double.parseDouble(getTextEdit(fields[0],this));
+            loanAPR = Double.parseDouble(getTextEdit(fields[1],this));
+            loanYears = Double.parseDouble(getTextEdit(fields[2],this));
+            loanDeposit = Double.parseDouble(getTextEdit(fields[3],this));
+            loanPropertyTax = Double.parseDouble(getTextEdit(fields[4],this));
+            loanInsurance = Double.parseDouble(getTextEdit(fields[5],this));
+            loanPMI = Double.parseDouble(getTextEdit(fields[6],this));
+            MortgageCalculation mCalc = new MortgageCalculation(loanAmount, loanAPR, loanYears,loanDeposit,loanPropertyTax,loanInsurance,loanPMI);
+            if(!getTextEdit(R.id.extraPayments,this).isBlank() ){
+                mCalc.setExtraPayment(Double.parseDouble(getTextEdit(R.id.extraPayments,this)));
+            }
+            mCalc.calculateExtraPayment();
+            for(int f : fields){
+                removeField(f,this);
+            }
 
+            for(int r : resultFields){
+                showField(r,this);
+            }
+            hideField(R.id.extraPayments,this);
+            disableButton(R.id.submit,this);
+            String mPaymentsFormatted = NumberFormat.getCurrencyInstance().format(mCalc.getTotalInterestPaid());
+            setField(R.id.totalInterestPaid,"Total Interest Paid: " + mPaymentsFormatted,this);
+            HistoryManager.Instance().addHistoryItem(mCalc);
         }
 
 

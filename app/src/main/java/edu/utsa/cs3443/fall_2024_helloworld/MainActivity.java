@@ -1,65 +1,60 @@
 package edu.utsa.cs3443.fall_2024_helloworld;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewTreeObserver;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import static edu.utsa.cs3443.fall_2024_helloworld.Model.viewMethods.*;
+
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button newBtn;
-    String[] calNames = {"Mortgage Calculator", "Auto Loan Calculator", "Interest Calculator", "Recent Calculations"};
-
-
-
+    Map<String,Class<?>> buttonMap = Map.ofEntries(
+            Map.entry("Mortgage Calculator",MortgageCalcActivity.class),
+            Map.entry("Auto Loan Calculator",AutoLoanCalcActivity.class),
+            Map.entry("Interest Calculator",InterestCalcActivity.class),
+            Map.entry("Recent Calculations",HistoryActivity.class)
+    );
+    static boolean didSplash = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         androidx.core.splashscreen.SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-                try {
-            Thread.sleep(600);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
         setContentView(R.layout.activity_main);
-        for(String cal : calNames){
+        final View content = findViewById(R.id.linearLayout);
+        // This is garbage, and I'm not sure why we are even doing this.
+        if(!didSplash) {
+            didSplash = true;
+            content.getViewTreeObserver().addOnPreDrawListener(
+                    new ViewTreeObserver.OnPreDrawListener() {
+                        @Override
+                        public boolean onPreDraw() {
+                            try {
+                                Thread.sleep(600);
+                            } catch (InterruptedException ignored) {}
+                            content.getViewTreeObserver().removeOnPreDrawListener(this);
+                            return true;
+                        }
+                    });
+        }
+        for (String cal: buttonMap.keySet()) {
             addButton(cal,this);
         }
-
     }
 
+    /** @noinspection SuspiciousMethodCalls*/
     @Override
     public void onClick(View v) {
 
+        if(!(v.getTag() instanceof String) || !buttonMap.containsKey(v.getTag())) return;
 
-        if(v.getTag() == calNames[0]){
-            Intent intent = new Intent(this, MortgageCalcActivity.class);
-            startActivity(intent);
-        }
-        if(v.getTag() == calNames[1]){
-
-            Intent intent = new Intent(this, AutoLoanCalcActivity.class);
-            startActivity(intent);
-
-        }
-        if(v.getTag() == calNames[2]){
-
-            Intent intent = new Intent(this, InterestCalcActivity.class);
-            startActivity(intent);
-
-        }
-
-        if(v.getTag() == calNames[3]){
-
-            Intent intent = new Intent(this, HistoryActivity.class);
-            startActivity(intent);
-
-        }
-
+        Intent intent = new Intent(this, buttonMap.get(v.getTag()));
+        startActivity(intent);
     }
-
-
-
 }

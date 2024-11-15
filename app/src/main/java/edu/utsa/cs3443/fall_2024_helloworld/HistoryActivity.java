@@ -10,11 +10,18 @@ import android.widget.LinearLayout;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Map;
+
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.Calculation;
 
 public class HistoryActivity extends AppCompatActivity implements View.OnClickListener{
     Button newBtn;
+    Map<String,Class<?>> buttonMap = Map.ofEntries(
+        Map.entry("MortgageCalculation",MortgageCalcActivity.class),
+        Map.entry("AutoLoanCalculation",AutoLoanCalcActivity.class),
+        Map.entry("InterestCalculation",InterestCalcActivity.class)
+    );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,22 +45,16 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         if(v.getId() != R.id.backbutton) {
 
             Button clickedButton = (Button) v;
-            if(String.valueOf(clickedButton.getText()).equals("MortgageCalculation")){
-                Intent intent = new Intent(this, MortgageCalcActivity.class);
+            if(buttonMap.containsKey(String.valueOf(clickedButton.getText()))){
+                Intent intent = new Intent(this, buttonMap.get(String.valueOf(clickedButton.getText())));
                 int index = clickedButton.getId();
                 intent.putExtra("Index",String.valueOf(index-1000));
                 startActivity(intent);
             }
-
-
+            return;
         }
-
-
-        if(v.getId() == R.id.backbutton){
-            Intent intent = new Intent(this, MainActivity.class);
-
-            startActivity(intent);
-        }
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
 
     }
 
@@ -68,7 +69,6 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         int style = R.style.button;
 
         newBtn = new Button(new ContextThemeWrapper(this, style), null, style);
-        String[] objType = calculation.getClass().getName().split("\\.");
         newBtn.setText(getCalculationType(calculation));
         newBtn.setHeight(260);
         newBtn.setTag(calculation);
