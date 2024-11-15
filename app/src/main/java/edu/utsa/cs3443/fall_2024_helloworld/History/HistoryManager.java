@@ -13,11 +13,20 @@ import java.util.ArrayList;
 
 import edu.utsa.cs3443.fall_2024_helloworld.Model.Calculation;
 
+/***
+ * Singleton class to manage the history of calculations
+ *
+ * @author Cole Frankland soc206
+ */
 public class HistoryManager {
     public static final int MAX_SAVED_HISTORY = 8;
     static String TAG = "HistoryManager";
     static HistoryManager _instance;
     private ArrayList<Calculation> historyItems;
+    /***
+     * Singleton instance of the HistoryManager
+     * @return the instance of the HistoryManager
+     */
     public static HistoryManager Instance(){
         if(_instance == null){
             _instance = new HistoryManager();
@@ -31,14 +40,23 @@ public class HistoryManager {
 
 
     private boolean isLoaded = false;
-
+    /***
+     * Get the history items
+     * @return the history items
+     */
     public ArrayList<Calculation> getHistoryItems() {
         return this.historyItems;
     }
+    /***
+     * Add a history item to the history
+     * @param item the history item to add
+     */
     public void addHistoryItem(Calculation item){
         historyItems.add(item);
     }
-
+    /***
+     * Load the history from the data directory
+     */
     public void Load(File dataDir){
         if(isLoaded)
             return;
@@ -67,6 +85,9 @@ public class HistoryManager {
         }
 
     }
+    /***
+     * Save the history to the data directory
+     */
     public void Save(File dataDir){
         File historyFile = new File(dataDir,"history.bin");
         try{
