@@ -62,8 +62,6 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
-
-
             return;
         }
 
