@@ -11,7 +11,10 @@ import java.text.NumberFormat;
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.MortgageCalculation;
 
-
+/*** MortgageCalcActivity class to handle the mortgage calculator activity
+ *
+ * @author Wheeler
+ */
 public class MortgageCalcActivity extends AppCompatActivity implements View.OnClickListener {
 
     int[] fields = {R.id.loanAmount,R.id.loanApr,R.id.loanYears,R.id.deposit,R.id.propertyTaxes,R.id.insurance,R.id.pmi};
@@ -24,6 +27,7 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
     double loanInsurance;
     double loanPMI;
     double loanExtraPayment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +61,6 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
             startActivity(intent);
         }
 
-
         if(v.getId() == R.id.submit){
 
             if (Arrays.stream(fields).anyMatch(n -> getTextEdit(n,this).isBlank())) {
@@ -90,12 +93,5 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
             setField(R.id.totalInterestPaid,"Total Interest Paid: " + mPaymentsFormatted,this);
             HistoryManager.Instance().addHistoryItem(mCalc);
         }
-
-
-
     }
-
-
-
-
 }

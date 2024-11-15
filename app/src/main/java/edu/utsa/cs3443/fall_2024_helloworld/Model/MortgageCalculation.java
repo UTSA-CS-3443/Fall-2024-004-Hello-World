@@ -1,7 +1,10 @@
 package edu.utsa.cs3443.fall_2024_helloworld.Model;
 
 import java.io.Serializable;
-
+/*** Calculate the monthly payment, total interest paid, and total cost of a mortgage
+ *
+ * @author Wheeler
+ */
 public class MortgageCalculation extends Calculation implements Serializable {
 
     private static final int MONTHS_IN_YEARS = 12;

@@ -11,11 +11,18 @@ import static edu.utsa.cs3443.fall_2024_helloworld.Model.ViewMethods.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
+/*** MainActivity class to handle the main activity
+ *
+ * @author Wheeler
+ * @author Cole
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Map<String,Class<?>> buttonMap;
 
+    /***
+     * Constructor to initialize the button map
+     */
     public MainActivity() {
         super();
         buttonMap = new LinkedHashMap<>();

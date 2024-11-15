@@ -13,7 +13,10 @@ import java.util.Arrays;
 
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.AutoLoanCalculation;
-
+/*** AutoLoanCalcActivity class to handle the auto loan calculator activity
+ *
+ * @author Wheeler
+ */
 public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnClickListener {
     int[] fields ={R.id.downPayment,R.id.loanAPR,R.id.totalCost};
     @Override

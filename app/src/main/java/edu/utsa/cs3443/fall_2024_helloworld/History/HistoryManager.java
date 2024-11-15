@@ -20,6 +20,7 @@ import edu.utsa.cs3443.fall_2024_helloworld.Model.Calculation;
  */
 public class HistoryManager {
     public static final int MAX_SAVED_HISTORY = 8;
+    public static final String FILE_NAME = "history.bin";
     static String TAG = "HistoryManager";
     static HistoryManager _instance;
     private ArrayList<Calculation> historyItems;
@@ -61,7 +62,7 @@ public class HistoryManager {
         if(isLoaded)
             return;
         isLoaded = true;
-        File historyFile = new File(dataDir,"history.bin");
+        File historyFile = new File(dataDir, FILE_NAME);
         try {
             ObjectInputStream reader = new ObjectInputStream(new FileInputStream(historyFile));
 
@@ -89,7 +90,7 @@ public class HistoryManager {
      * Save the history to the data directory
      */
     public void Save(File dataDir){
-        File historyFile = new File(dataDir,"history.bin");
+        File historyFile = new File(dataDir,FILE_NAME);
         try{
             ObjectOutputStream writer = new ObjectOutputStream(Files.newOutputStream(historyFile.toPath()));
             int count = Math.min(historyItems.size(), MAX_SAVED_HISTORY);
