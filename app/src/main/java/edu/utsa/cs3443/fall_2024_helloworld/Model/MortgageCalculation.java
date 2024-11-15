@@ -7,12 +7,13 @@ public class MortgageCalculation extends Calculation implements Serializable {
     private static final int MONTHS_IN_YEARS = 12;
     private double loanAmount;
     private double loanAPR ;
-    private double  loanYears;
+    private double loanYears;
     private double depositAmount;
     private double propertyTaxes;
     private double insurance;
     private double pmi;
-    private double extraPayment;
+    private double extraPayment = 0;
+    private int monthsTillPaidOff;
     private double monthlyInterestRate;
     private double numberOfPayments;
     private double monthlyPayment;
@@ -47,9 +48,9 @@ public class MortgageCalculation extends Calculation implements Serializable {
         this.pmi = pmi;
         this.monthlyInterestRate = loanAPR / 100 / MONTHS_IN_YEARS;
         this.numberOfPayments = loanYears * MONTHS_IN_YEARS;
-        this.monthlyPayment = calculateMonthlyPayment();
-        this.totalInterestPaid = (monthlyPayment * numberOfPayments) - loanAmount;
-        this.totalCostOfMortgage = totalInterestPaid + loanAmount;
+        this.monthlyPayment = calculateMonthlyPayment() + ((propertyTaxes + insurance) / 12) + pmi;
+//        this.totalInterestPaid = monthlyPayment * numberOfPayments - loanAmount;
+//        this.totalCostOfMortgage = totalInterestPaid + loanAmount;
 
     }
 
@@ -91,14 +92,65 @@ public class MortgageCalculation extends Calculation implements Serializable {
         return totalCostOfMortgage;
     }
 
+    public double getExtraPayment() {
+        return extraPayment;
+    }
+
+    public double getMonthlyInterestRate() {
+        return monthlyInterestRate;
+    }
+
+    public double getNumberOfPayments() {
+        return numberOfPayments;
+    }
+
+    public double getTotalInterestPaid() {
+        return totalInterestPaid;
+    }
+
     public double calculateMonthlyPayment() {
 
-        double mathPower = Math.pow(1 + monthlyInterestRate, numberOfPayments);
-        double otherMonthlyCosts = ((propertyTaxes + insurance) / 12) + pmi;
-        double mPayments = (loanAmount - depositAmount) * (monthlyInterestRate * mathPower / (mathPower - 1));
+        return (loanAmount - depositAmount) * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments))
+                / (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
 
-        return mPayments + otherMonthlyCosts;
 
+    }
+
+    public void setExtraPayment(double extraPayment) {
+        this.extraPayment = extraPayment;
+    }
+
+    public void calculateExtraPayment() {
+
+        // Total payment including the extra payment
+        double totalMonthlyPayment = calculateMonthlyPayment() + this.extraPayment;
+        // Initialize variables
+        double remainingBalance = this.loanAmount - this.depositAmount;
+        double totalPaid = 0;
+        double interestPaid = 0;
+        int months = 0;
+
+        // Simulate loan repayment month by month
+        while (remainingBalance > 0) {
+            months++;
+            double interestForTheMonth = remainingBalance * this.monthlyInterestRate;
+            double principalPayment = totalMonthlyPayment - interestForTheMonth;
+
+            // Ensure the last payment doesn't overpay the remaining balance
+            if (principalPayment > remainingBalance) {
+                principalPayment = remainingBalance;
+                totalMonthlyPayment = principalPayment + interestForTheMonth;
+            }
+
+            // Update the remaining balance
+            remainingBalance -= principalPayment;
+            totalPaid += totalMonthlyPayment;
+            interestPaid += interestForTheMonth;
+        }
+
+        this.monthsTillPaidOff = months;
+        this.totalCostOfMortgage = totalPaid;
+        this.totalInterestPaid = interestPaid;
     }
 
 }

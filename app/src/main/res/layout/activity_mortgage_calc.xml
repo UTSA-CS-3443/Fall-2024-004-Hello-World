@@ -130,7 +130,6 @@
             android:background="@drawable/field_style_for_cals"
             android:ems="10"
             android:hint="@string/total_interest_paid"
-            android:inputType="numberDecimal"
             android:paddingLeft="15dp"
             android:textStyle="bold"
             android:enabled="false" /> <!-- display only delete if interaction is needed -->
