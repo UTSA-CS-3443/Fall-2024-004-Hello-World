@@ -14,7 +14,8 @@ Takes input for variables such as:
    - Property Taxes/Insurance/PMI(Escrow)
    - Extra Payments
    - Insurance
-   - PMI
+   - PMI 
+  
 Then it will provide the calculations results for the following:
    - Total Cost of Mortgage
    - Total Monthly Payment
