@@ -32,7 +32,7 @@ https://github.com/UTSA-CS-3443/Fall-2024-004-Hello-World.git
 ## Usage
 
 This application is meant to serve as a calculator app for adults of all ages, helping them navigate finances easily. Once installed you will be able to
-perform calculations using the calculators below in order to calculate what you need. This will then result in saving time on finding calculators to performs tasks.
+perform calculations using the calculators below in order to calculate what you need. This will then result in saving time on finding calculators to performs the below tasks.
 
 - Mortgage Calculator takes input for variables such as: 
    - Deposit
