@@ -16,7 +16,7 @@ Takes input for variables such as:
    - Insurance
    - PMI 
   
-Then it will provide the calculations results for the following:
+  Then it will provide the calculations results for the following:
    - Total Cost of Mortgage
    - Total Monthly Payment
    - Months to pay off Mortage
