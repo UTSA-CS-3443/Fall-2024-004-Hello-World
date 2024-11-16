@@ -2,6 +2,10 @@ package edu.utsa.cs3443.fall_2024_helloworld.Model;
 
 import java.io.Serializable;
 
+/*** Calculate the monthly payment, total interest paid, and total cost of an auto loan
+ *
+ * @author Joseph
+ */
 public class AutoLoanCalculation extends Calculation implements Serializable {
     private double tradeInValue = 0;
     private double downPayment = 0;

@@ -17,7 +17,11 @@ import java.util.Map;
 
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.Calculation;
-
+/*** HistoryActivity class to handle the history activity
+ *
+ * @author Cole
+ * @author Wheeler
+ */
 public class HistoryActivity extends AppCompatActivity implements View.OnClickListener{
     Button newBtn;
     Map<String,Class<?>> buttonMap = Map.ofEntries(
@@ -58,8 +62,6 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
-
-
             return;
         }
 

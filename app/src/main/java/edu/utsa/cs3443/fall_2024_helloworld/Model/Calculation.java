@@ -8,18 +8,9 @@ import java.io.Serializable;
  * Authors: Collaborative effort of the team
  */
 public abstract class Calculation implements Serializable {
-//    Abstract class cannot be instantiated
-
-//    private static Calculation _instance;
-//    public static Calculation Instance(){
-//        if(_instance == null){
-//            _instance = new Calculation();
-//        }
-//        return _instance;
-//    }
 
     /**
-     *
+     * Calculate the interest rate
      * @param annualRate APR
      * @return monthly interest rate
      */
@@ -29,7 +20,7 @@ public abstract class Calculation implements Serializable {
     }
 
     /**
-     *
+     * Calculate the mortgage loan amount
      * @param propertyPrice total price of property
      * @param deposit the deposit amount
      * @return the total loan amount
@@ -39,11 +30,11 @@ public abstract class Calculation implements Serializable {
     }
 
     /**
-     *
-     * @param loanAmount
-     * @param loanAPR
-     * @param loanYears
-     * @return
+     * calculate the mortgage payment
+     * @param loanAmount the loan amount
+     * @param loanAPR the annual percentage rate
+     * @param loanYears the number of years
+     * @return the monthly payment
      */
     public double calcMortgagePayments(float loanAmount, float loanAPR, int loanYears){
         int totalPayments = loanYears * 12;
@@ -52,7 +43,7 @@ public abstract class Calculation implements Serializable {
     }
 
     /**
-     *
+     * Calculate compound interest
      * @param principal Initial balance
      * @param interestRate interest rate as a value 1<x<0
      * @param timesCompoundedPerYear Times Compounded per year, for example 12 for monthly, or 53 for weekly
@@ -64,7 +55,7 @@ public abstract class Calculation implements Serializable {
     }
 
     /**
-     *
+     * calculate continuous compound interest
      * @param principle Initial balance
      * @param periodicInterestRate interest rate over a period
      * @param periods number of periods

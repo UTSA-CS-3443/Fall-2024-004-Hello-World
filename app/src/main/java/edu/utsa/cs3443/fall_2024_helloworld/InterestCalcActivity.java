@@ -7,7 +7,10 @@ import android.view.View;
 import static edu.utsa.cs3443.fall_2024_helloworld.Model.ViewMethods.*;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+/*** InterestCalcActivity class to handle the interest calculator activity
+ *
+ * @author Wheeler
+ */
 public class InterestCalcActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
