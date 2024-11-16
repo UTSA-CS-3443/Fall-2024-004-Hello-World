@@ -8,40 +8,15 @@ import java.io.Serializable;
  * Authors: Collaborative effort of the team
  */
 public abstract class Calculation implements Serializable {
+//    Abstract class cannot be instantiated
 
-    double loanAmount;
-    double loanAPR;
-    double loanYears;
-
-    public Calculation(double loanAmount, double loanAPR, double loanYears) {
-        this.loanAmount = loanAmount;
-        this.loanAPR = loanAPR;
-        this.loanYears = loanYears;
-    }
-
-    public double getLoanAmount() {
-        return loanAmount;
-    }
-
-    public void setLoanAmount(double loanAmount) {
-        this.loanAmount = loanAmount;
-    }
-
-    public double getLoanAPR() {
-        return loanAPR;
-    }
-
-    public void setLoanAPR(double loanAPR) {
-        this.loanAPR = loanAPR;
-    }
-
-    public double getLoanYears() {
-        return loanYears;
-    }
-
-    public void setLoanYears(double loanYears) {
-        this.loanYears = loanYears;
-    }
+//    private static Calculation _instance;
+//    public static Calculation Instance(){
+//        if(_instance == null){
+//            _instance = new Calculation();
+//        }
+//        return _instance;
+//    }
 
     /**
      *
@@ -53,6 +28,28 @@ public abstract class Calculation implements Serializable {
 
     }
 
+    /**
+     *
+     * @param propertyPrice total price of property
+     * @param deposit the deposit amount
+     * @return the total loan amount
+     */
+    public double calcMortgageLoanAmount(double propertyPrice, double deposit){
+        return propertyPrice - deposit;
+    }
+
+    /**
+     *
+     * @param loanAmount
+     * @param loanAPR
+     * @param loanYears
+     * @return
+     */
+    public double calcMortgagePayments(float loanAmount, float loanAPR, int loanYears){
+        int totalPayments = loanYears * 12;
+        float monthlyRate = loanAPR / 12;
+        return calcMortgagePayments(loanAmount, monthlyRate, totalPayments);
+    }
 
     /**
      *
