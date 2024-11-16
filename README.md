@@ -1,12 +1,24 @@
 # Adulting.io
 Android project for team: Hello World. This application is meant to serve as a calculator app for adults of all ages, helping them navigate finances easily.
 
-## Installation
+## Prerequisites
 
+- [Android Studio](https://developer.android.com/studio) installed on your machine.
+- Java Development Kit (JDK) version 11 or higher.
+- Git installed on your computer.
+
+### Clone the Repository
+
+You can clone this repository using Git or directly from Android Studio:
+
+**Using Git:**
+
+```bash
+git clone https://github.com/UTSA-CS-3443/Fall-2024-004-Hello-World.git
+```
 ## Calculators
 
-- Mortgage
-Takes input for variables such as: 
+- Mortgage Calculator takes input for variables such as: 
    - Deposit
    - Loan amount
    - Loan APR
@@ -21,15 +33,17 @@ Takes input for variables such as:
    - Total Monthly Payment
    - Months to pay off Mortage
 
-* Auto Loan Payments
+- Auto Loan Calculator takes input for variables such as:
    - Trade-in value
    - Down payment
    - APR
    - Total cost of new car 
    - Extra monthly amount 
+  
+  Then it will provide the calculations results for the following:
 
-* Interest
-  - 
+- Interest
+  
  
 
 
