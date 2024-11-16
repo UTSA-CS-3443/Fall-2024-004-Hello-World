@@ -21,9 +21,6 @@ public class MortgageCalculation extends Calculation implements Serializable {
     private double totalInterestPaid;
     private double totalCostOfMortgage;
 
-    public double getLoanYears() {
-        return loanYears;
-    }
 
     public double getDepositAmount() {
         return depositAmount;
@@ -56,20 +53,6 @@ public class MortgageCalculation extends Calculation implements Serializable {
         return monthsTillPaidOff;
     }
 
-    public double getLoanAmount() {
-        return loanAmount;
-    }
-
-
-
-    public double getLoanAPR() {
-        return loanAPR;
-    }
-
-
-
-
-
     public double getMonthlyPayment() {
         return monthlyPayment;
     }
@@ -88,7 +71,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
 
     public double calculateMonthlyPayment() {
 
-        return (loanAmount - depositAmount) * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments))
+        return (super.getLoanAmount() - depositAmount) * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments))
                 / (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
 
     }
@@ -102,7 +85,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
         // Total payment including the extra payment
         double totalMonthlyPayment = calculateMonthlyPayment() + this.extraPayment;
         // Initialize variables
-        double remainingBalance = this.loanAmount - this.depositAmount;
+        double remainingBalance = super.getLoanAmount() - this.depositAmount;
         double totalPaid = 0;
         double interestPaid = 0;
         int months = 0;

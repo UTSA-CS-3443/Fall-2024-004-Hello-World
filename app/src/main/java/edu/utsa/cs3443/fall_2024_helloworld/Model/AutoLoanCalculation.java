@@ -43,9 +43,6 @@ public class AutoLoanCalculation extends Calculation implements Serializable {
         this.downPayment = downPayment;
     }
 
-    public double getLoanAmount() {
-        return loanAmount;
-    }
 
     public double getMonthlyPayment() {
         return monthlyPayment;
