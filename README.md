@@ -25,7 +25,7 @@ Then it will provide the calculations results for the following:
    - Down payment
    - APR
    - Total cost of new car
-   - Extra monthly amount
+   - Extra monthly amount 
 
 * Interest
   - 
