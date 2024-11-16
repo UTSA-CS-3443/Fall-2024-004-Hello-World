@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:scrollbars="vertical">
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,7 +39,7 @@
         android:paddingBottom="50dp">
 
         <EditText
-            android:id="@+id/totalCost"
+            android:id="@+id/autoloanAmount"
             android:layout_width="match_parent"
             android:layout_height="88dp"
             android:background="@drawable/field_style_for_cals"
@@ -39,17 +47,9 @@
             android:inputType="numberDecimal"
             android:paddingLeft="15dp"
             android:textStyle="bold" />
+
         <EditText
-            android:id="@+id/downPayment"
-            android:layout_width="match_parent"
-            android:layout_height="88dp"
-            android:background="@drawable/field_style_for_cals"
-            android:hint="@string/down_payment"
-            android:inputType="numberDecimal"
-            android:paddingLeft="15dp"
-            android:textStyle="bold" />
-        <EditText
-            android:id="@+id/loanAPR"
+            android:id="@+id/autoloanAPR"
             android:layout_width="match_parent"
             android:layout_height="88dp"
             android:background="@drawable/field_style_for_cals"
@@ -57,9 +57,19 @@
             android:inputType="numberDecimal"
             android:paddingLeft="15dp"
             android:textStyle="bold" />
+        <EditText
+            android:id="@+id/autoloanYears"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/loan_Years"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/tradeInValue"
+            android:id="@+id/autotradeInValue"
             android:layout_width="match_parent"
             android:layout_height="88dp"
             android:background="@drawable/field_style_for_cals"
@@ -69,10 +79,19 @@
             android:paddingLeft="15dp"
             android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/autodownPayment"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:hint="@string/down_payment"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
 
 
         <EditText
-            android:id="@+id/extraMonthlyAmount"
+            android:id="@+id/autoextraMonthlyAmount"
             android:layout_width="match_parent"
             android:layout_height="88dp"
             android:background="@drawable/field_style_for_cals"
@@ -80,6 +99,50 @@
             android:inputType="numberDecimal"
             android:paddingLeft="15dp"
             android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/autoTotalInterestPaid"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/total_interest_paid"
+            android:paddingLeft="15dp"
+            android:textStyle="bold"
+            android:enabled="false" /> <!-- display only delete if interaction is needed -->
+
+        <EditText
+            android:id="@+id/autoTotalCost"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/total_cost_mortgage"
+            android:paddingLeft="15dp"
+            android:textStyle="bold"
+            android:enabled="false" /> <!-- display only -->
+
+        <EditText
+            android:id="@+id/autoTotalMonthlyPayment"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/total_monthly_payment"
+            android:paddingLeft="15dp"
+            android:textStyle="bold"
+            android:enabled="false" /> <!-- display only -->
+
+        <EditText
+            android:id="@+id/autoMonthsToPayOff"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/months_to_pay_off"
+            android:paddingLeft="15dp"
+            android:textStyle="bold"
+            android:enabled="false" />
 
     </LinearLayout>
 
@@ -108,3 +171,4 @@
     </LinearLayout>
 
 </LinearLayout>
+</ScrollView>

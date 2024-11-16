@@ -8,9 +8,7 @@ import java.io.Serializable;
 public class MortgageCalculation extends Calculation implements Serializable {
 
     private static final int MONTHS_IN_YEARS = 12;
-    private double loanAmount;
-    private double loanAPR ;
-    private double loanYears;
+
     private double depositAmount;
     private double propertyTaxes;
     private double insurance;
@@ -42,9 +40,7 @@ public class MortgageCalculation extends Calculation implements Serializable {
     public double getPmi() {return pmi;}
 
     public MortgageCalculation(double loanAmount, double loanAPR, double loanYears, double depositAmount, double propertyTaxes, double insurance, double pmi   ) {
-        this.loanAmount = loanAmount;
-        this.loanAPR = loanAPR;
-        this.loanYears = loanYears;
+        super(loanAmount, loanAPR,loanYears);
         this.depositAmount = depositAmount;
         this.propertyTaxes = propertyTaxes;
         this.insurance = insurance;
@@ -56,35 +52,23 @@ public class MortgageCalculation extends Calculation implements Serializable {
 
     }
 
+    public int getMonthsTillPaidOff() {
+        return monthsTillPaidOff;
+    }
 
     public double getLoanAmount() {
         return loanAmount;
     }
 
-    public void setLoanAmount(float loanAmount) {
-        this.loanAmount = loanAmount;
-    }
+
 
     public double getLoanAPR() {
         return loanAPR;
     }
 
-    public void setLoanAPR(float loanAPR) {
-        this.loanAPR = loanAPR;
-    }
-
-    public double getPrivateloanYears() {
-        return loanYears;
-    }
-
-    public void setPrivateloanYears(int privateloanYears) {
-        this.loanYears = privateloanYears;
-    }
 
 
-    public void setMonthlyPayments(Double monthlyPayment) {
-        this.monthlyPayment = monthlyPayment;
-    }
+
 
     public double getMonthlyPayment() {
         return monthlyPayment;
@@ -96,14 +80,6 @@ public class MortgageCalculation extends Calculation implements Serializable {
 
     public double getExtraPayment() {
         return extraPayment;
-    }
-
-    public double getMonthlyInterestRate() {
-        return monthlyInterestRate;
-    }
-
-    public double getNumberOfPayments() {
-        return numberOfPayments;
     }
 
     public double getTotalInterestPaid() {

@@ -165,7 +165,8 @@
             android:hint="@string/months_to_pay_off"
             android:paddingLeft="15dp"
             android:textStyle="bold"
-            android:enabled="false" /> <!-- display onlly -->
+            android:enabled="false" />
+        <!-- display onlly -->
 
     </LinearLayout>
 

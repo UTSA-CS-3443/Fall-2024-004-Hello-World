@@ -18,7 +18,7 @@ import edu.utsa.cs3443.fall_2024_helloworld.Model.MortgageCalculation;
 public class MortgageCalcActivity extends AppCompatActivity implements View.OnClickListener {
 
     int[] fields = {R.id.loanAmount,R.id.loanApr,R.id.loanYears,R.id.deposit,R.id.propertyTaxes,R.id.insurance,R.id.pmi};
-    int[] resultFields = {R.id.totalInterestPaid};
+    int[] resultFields = {R.id.totalInterestPaid,R.id.totalCostMortgage,R.id.totalMonthlyPayment,R.id.monthsToPayOff};
     double loanAmount;
     double loanAPR;
     double loanYears;
@@ -91,6 +91,11 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
             disableButton(R.id.submit,this);
             String mPaymentsFormatted = NumberFormat.getCurrencyInstance().format(mCalc.getTotalInterestPaid());
             setField(R.id.totalInterestPaid,"Total Interest Paid: " + mPaymentsFormatted,this);
+            mPaymentsFormatted = NumberFormat.getCurrencyInstance().format(mCalc.getTotalCostOfMortgage());
+            setField(R.id.totalCostMortgage,"Total Cost of Loan: " + mPaymentsFormatted,this);
+            mPaymentsFormatted = NumberFormat.getCurrencyInstance().format(mCalc.getMonthlyPayment());
+            setField(R.id.totalMonthlyPayment,"Total Monthly Payment: " + mPaymentsFormatted,this);
+            setField(R.id.monthsToPayOff,"Months Till Payoff: " + mCalc.getMonthsTillPaidOff(),this);
             HistoryManager.Instance().addHistoryItem(mCalc);
         }
     }

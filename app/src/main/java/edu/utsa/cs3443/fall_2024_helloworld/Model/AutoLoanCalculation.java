@@ -9,24 +9,17 @@ import java.io.Serializable;
 public class AutoLoanCalculation extends Calculation implements Serializable {
     private double tradeInValue = 0;
     private double downPayment = 0;
-    private double loanARP;
-    private double totalCost;
     private double extraPayment = 0;
-    private double loanAmount;
     private double monthlyPayment;
     private double totalInterestPaid;
     private double totalCostOfLoan;
+    private double monthlyInterestRate;
+    private int monthsTillPaidOff;
 
-    public AutoLoanCalculation(double downPayment, double loanARP, double totalCost) {
-        this.tradeInValue = tradeInValue;
-        this.downPayment = downPayment;
-        this.loanARP = loanARP;
-        this.totalCost = totalCost;
-        this.extraPayment = extraPayment;
+    public AutoLoanCalculation(double loanAmount,double loanARP, double loanYears) {
+        super(loanAmount,loanARP,loanYears);
+        this.monthlyInterestRate = super.getLoanAPR() / 100 / 12;
 
-        // Calculate the loan amount after trade-in and down payment
-        this.loanAmount = totalCost;
-        calculateLoanPayments();
     }
 
     public double getTradeInValue() {
@@ -37,13 +30,6 @@ public class AutoLoanCalculation extends Calculation implements Serializable {
         return downPayment;
     }
 
-    public double getLoanARP() {
-        return loanARP;
-    }
-
-    public double getTotalCost() {
-        return totalCost;
-    }
 
     public void setExtraPayment(double extraPayment) {
         this.extraPayment = extraPayment;
@@ -73,16 +59,20 @@ public class AutoLoanCalculation extends Calculation implements Serializable {
         return totalCostOfLoan;
     }
 
+    public int getMonthsTillPaidOff() {
+        return monthsTillPaidOff;
+    }
+
     public double getExtraPayment() {
         return extraPayment;
     }
 
     public void calculateLoanPayments() {
-        double monthlyInterestRate = calcMonthlyInterestRate(loanARP);
-        double numberOfPayments = 60;
+
+        double numberOfPayments = super.getLoanYears() * 12;
 
         // Calculate the base monthly payment
-        this.monthlyPayment = (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments))
+        this.monthlyPayment = (super.getLoanAmount() * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments))
                 / (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
 
         // After base payment calculation, factor in extra payments
@@ -90,8 +80,8 @@ public class AutoLoanCalculation extends Calculation implements Serializable {
     }
 
     public void calculateExtraPayment() {
-        double totalMonthlyPayment = this.monthlyPayment + extraPayment;
-        double remainingBalance = this.loanAmount - this.downPayment - this.tradeInValue;
+        double totalMonthlyPayment = this.monthlyPayment + this.extraPayment;
+        double remainingBalance = super.getLoanAmount() - this.downPayment - this.tradeInValue;
         double totalPaid = 0;
         double interestPaid = 0;
         int months = 0;
@@ -99,7 +89,7 @@ public class AutoLoanCalculation extends Calculation implements Serializable {
         // Simulate loan repayment month by month
         while (remainingBalance > 0) {
             months++;
-            double interestForTheMonth = remainingBalance * calcMonthlyInterestRate(loanARP);
+            double interestForTheMonth = remainingBalance * monthlyInterestRate;
             double principalPayment = totalMonthlyPayment - interestForTheMonth;
 
             // Ensure the last payment doesn't overpay the remaining balance
@@ -116,5 +106,6 @@ public class AutoLoanCalculation extends Calculation implements Serializable {
         // Store the total cost of the loan and interest paid after all payments are made
         this.totalCostOfLoan = totalPaid;
         this.totalInterestPaid = interestPaid;
+        this.monthsTillPaidOff = months;
     }
 }

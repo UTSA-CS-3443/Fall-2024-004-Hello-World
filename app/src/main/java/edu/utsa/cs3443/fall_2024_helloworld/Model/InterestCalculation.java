@@ -7,24 +7,20 @@ import java.io.Serializable;
  * @author Joseph
  */
 public class InterestCalculation extends Calculation implements Serializable {
-    private double principal;
-    private double interestRate;
+
     private int timesCompoundedPerYear;
-    private double years;
     private double compoundInterest;
     private double continuousCompoundInterest;
     /***
      * Constructor for the InterestCalculation class
-     * @param principal the initial balance
-     * @param interestRate the interest rate as a value 1<x<0
+     * @param loanAmount the initial balance
+     * @param loanAPR the interest rate as a value 1<x<0
      * @param timesCompoundedPerYear the times compounded per year, for example 12 for monthly, or 53 for weekly
-     * @param years the number of years
+     * @param loanYears the number of years
      */
-    public InterestCalculation(double principal, double interestRate, int timesCompoundedPerYear, double years) {
-        this.principal = principal;
-        this.interestRate = interestRate;
+    public InterestCalculation(double loanAmount, double loanAPR, double loanYears, int timesCompoundedPerYear) {
+        super(loanAmount,loanAPR,loanYears);
         this.timesCompoundedPerYear = timesCompoundedPerYear;
-        this.years = years;
 
         calculateInterest();
     }
@@ -46,7 +42,7 @@ public class InterestCalculation extends Calculation implements Serializable {
      * Calculate the compound interest
      */
     public void calculateInterest() {
-        this.compoundInterest = calcCompoundInterest(principal, interestRate, timesCompoundedPerYear, years);
-        this.continuousCompoundInterest = calcContinuousCompoundInterest(principal, interestRate, years);
+        this.compoundInterest = calcCompoundInterest(super.getLoanAmount(), super.getLoanAPR(), timesCompoundedPerYear, super.getLoanYears());
+        this.continuousCompoundInterest = calcContinuousCompoundInterest(super.getLoanAmount(), super.getLoanAPR(), super.getLoanYears());
     }
 }
