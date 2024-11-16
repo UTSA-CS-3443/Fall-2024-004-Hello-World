@@ -28,5 +28,7 @@
     <string name="curr_bal">\tCurrent Balance:</string>
     <string name="MPA">\tMonthy Payment Amount:</string>
     <string name="credit_apr">\tAPR (%):</string>
+    <string name="total_cost_interest">Total Cost of Loan</string>
+
 
 </resources>

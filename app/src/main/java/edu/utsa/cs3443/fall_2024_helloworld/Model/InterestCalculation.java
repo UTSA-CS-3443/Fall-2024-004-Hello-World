@@ -8,41 +8,67 @@ import java.io.Serializable;
  */
 public class InterestCalculation extends Calculation implements Serializable {
 
-    private int timesCompoundedPerYear;
-    private double compoundInterest;
-    private double continuousCompoundInterest;
+
+
+    double monthlyPaymentAmount;
+    private int monthsTillPaidOff;
+    private double totalInterestPaid;
+    private double totalCostOfLoan;
     /***
      * Constructor for the InterestCalculation class
      * @param loanAmount the initial balance
      * @param loanAPR the interest rate as a value 1<x<0
-     * @param timesCompoundedPerYear the times compounded per year, for example 12 for monthly, or 53 for weekly
-     * @param loanYears the number of years
+     * @param monthlyPaymentAmount how much is paid per month
      */
-    public InterestCalculation(double loanAmount, double loanAPR, double loanYears, int timesCompoundedPerYear) {
-        super(loanAmount,loanAPR,loanYears);
-        this.timesCompoundedPerYear = timesCompoundedPerYear;
+    public InterestCalculation(double loanAmount, double loanAPR, double monthlyPaymentAmount) {
+        super(loanAmount,loanAPR);
+        this.monthlyPaymentAmount = monthlyPaymentAmount;
 
-        calculateInterest();
     }
-    /***
-     * Get the compound interest
-     * @return the compound interest
-     */
-    public double getCompoundInterest() {
-        return compoundInterest;
+
+    public double getMonthlyPaymentAmount() {
+        return monthlyPaymentAmount;
     }
-    /***
-     * Get the continuous compound interest
-     * @return the continuous compound interest
-     */
-    public double getContinuousCompoundInterest() {
-        return continuousCompoundInterest;
+
+    public int getMonthsTillPaidOff() {
+        return monthsTillPaidOff;
     }
-    /***
-     * Calculate the compound interest
-     */
+
+    public double getTotalInterestPaid() {
+        return totalInterestPaid;
+    }
+
+    public double getTotalCostOfLoan() {
+        return totalCostOfLoan;
+    }
+
     public void calculateInterest() {
-        this.compoundInterest = calcCompoundInterest(super.getLoanAmount(), super.getLoanAPR(), timesCompoundedPerYear, super.getLoanYears());
-        this.continuousCompoundInterest = calcContinuousCompoundInterest(super.getLoanAmount(), super.getLoanAPR(), super.getLoanYears());
+        double totalMonthlyPayment = this.monthlyPaymentAmount;
+        double remainingBalance = super.getLoanAmount();
+        double totalPaid = 0;
+        double interestPaid = 0;
+        int months = 0;
+
+        // Simulate loan repayment month by month
+        while (remainingBalance > 0) {
+            months++;
+            double interestForTheMonth = remainingBalance * (super.getLoanAPR() / 100 / 12);
+            double principalPayment = totalMonthlyPayment - interestForTheMonth;
+
+            // Ensure the last payment doesn't overpay the remaining balance
+            if (principalPayment > remainingBalance) {
+                principalPayment = remainingBalance;
+                totalMonthlyPayment = principalPayment + interestForTheMonth;
+            }
+
+            remainingBalance -= principalPayment;
+            totalPaid += totalMonthlyPayment;
+            interestPaid += interestForTheMonth;
+        }
+
+        // Store the total cost of the loan and interest paid after all payments are made
+        this.totalCostOfLoan = totalPaid;
+        this.totalInterestPaid = interestPaid;
+        this.monthsTillPaidOff = months;
     }
 }

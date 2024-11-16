@@ -18,6 +18,12 @@ public abstract class Calculation implements Serializable {
         this.loanAPR = loanAPR;
         this.loanYears = loanYears;
     }
+    public Calculation(double loanAmount, double loanAPR) {
+        this.loanAmount = loanAmount;
+        this.loanAPR = loanAPR;
+
+    }
+
 
     public double getLoanAmount() {
         return loanAmount;
