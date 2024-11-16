@@ -36,7 +36,7 @@
             android:layout_height="88dp"
             android:background="@drawable/field_style_for_cals"
             android:ems="10"
-            android:hint="@string/curr_bal"
+            android:hint="@string/loan_amount"
             android:inputType="numberDecimal"
             android:paddingLeft="15dp"
             android:textStyle="bold" />
@@ -59,6 +59,39 @@
             android:background="@drawable/field_style_for_cals"
             android:ems="10"
             android:hint="@string/credit_apr"
+            android:inputType="number"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/interestMonthsToPayOff"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/months_to_pay_off"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/interestTotalCost"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/total_cost_interest"
+            android:inputType="numberDecimal"
+            android:paddingLeft="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/interestTotalPaid"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/field_style_for_cals"
+            android:ems="10"
+            android:hint="@string/total_interest_paid"
             android:inputType="number"
             android:paddingLeft="15dp"
             android:textStyle="bold" />

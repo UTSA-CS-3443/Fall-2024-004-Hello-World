@@ -1,5 +1,6 @@
 package edu.utsa.cs3443.fall_2024_helloworld.Model;
 
+import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
@@ -81,7 +82,7 @@ public class ViewMethods extends AppCompatActivity  {
     public static void hideField(int fieldId,Activity activity){
 
         EditText editText = activity.findViewById(fieldId);
-        editText.setVisibility(INVISIBLE);
+        editText.setVisibility(GONE);
     }
     /***
      * Set up a button
