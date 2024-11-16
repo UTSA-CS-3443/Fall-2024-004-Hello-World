@@ -1,5 +1,5 @@
 # Adulting.io
-Android project for team: Hello World. This application is meant to serve as a calculator app for adults of all ages, helping them navigate finances easily.
+Android project for team: Hello World. 
 
 ## Prerequisites
 
@@ -16,7 +16,23 @@ You can clone this repository using Git or directly from Android Studio:
 ```bash
 git clone https://github.com/UTSA-CS-3443/Fall-2024-004-Hello-World.git
 ```
-## Calculators
+
+**Using Android Studio Version Control**
+1. Open Android Studio
+2. Go to File > New > Project from Version Control
+3. Select _git_ 
+4. Enter the respository URL 
+```bash
+https://github.com/UTSA-CS-3443/Fall-2024-004-Hello-World.git
+```
+5. Choose the local directory where you want to store the cloned project
+6. Click Done
+
+
+## Usage
+
+This application is meant to serve as a calculator app for adults of all ages, helping them navigate finances easily. 
+
 
 - Mortgage Calculator takes input for variables such as: 
    - Deposit
