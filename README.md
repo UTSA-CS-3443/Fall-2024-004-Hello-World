@@ -24,7 +24,7 @@ Then it will provide the calculations results for the following:
    - Trade-in value
    - Down payment
    - APR
-   - Total cost of new car
+   - Total cost of new car 
    - Extra monthly amount 
 
 * Interest
