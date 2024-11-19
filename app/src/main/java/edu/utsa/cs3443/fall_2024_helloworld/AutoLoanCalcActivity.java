@@ -53,6 +53,10 @@ public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnCl
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
+        if (Arrays.stream(fields).anyMatch(n -> getTextEdit(n,this).isBlank())) {
+            Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(v.getId() == R.id.submit){
 
             if (Arrays.stream(fields).noneMatch(n -> getTextEdit(n,this).isBlank())) {

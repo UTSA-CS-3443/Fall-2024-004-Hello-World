@@ -3,12 +3,14 @@ package edu.utsa.cs3443.fall_2024_helloworld;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import static edu.utsa.cs3443.fall_2024_helloworld.Model.ViewMethods.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.NumberFormat;
+import java.util.Arrays;
 
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.AutoLoanCalculation;
@@ -51,6 +53,10 @@ public class InterestCalcActivity extends AppCompatActivity implements View.OnCl
         if(v.getId() == R.id.backbutton){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+        }
+        if (Arrays.stream(fields).anyMatch(n -> getTextEdit(n,this).isBlank())) {
+            Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            return;
         }
         if(v.getId() == R.id.submit){
             double loanAmount = Double.parseDouble(getTextEdit(fields[0],this));
