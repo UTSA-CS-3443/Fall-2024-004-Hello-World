@@ -14,13 +14,23 @@ import java.util.Arrays;
 
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.AutoLoanCalculation;
+
 /*** AutoLoanCalcActivity class to handle the auto loan calculator activity
  *
  * @author Wheeler
  */
 public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnClickListener {
+    /**
+     * The Fields.
+     */
     int[] fields ={R.id.autoloanAmount,R.id.autoloanAPR,R.id.autoloanYears};
+    /**
+     * The Other fields.
+     */
     int[] otherFields = {R.id.autotradeInValue,R.id.autodownPayment,R.id.autoextraMonthlyAmount};
+    /**
+     * The Result fields.
+     */
     int[] resultFields = {R.id.autoTotalInterestPaid,R.id.autoTotalCost,R.id.autoTotalMonthlyPayment,R.id.autoMonthsToPayOff};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +58,14 @@ public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-
+        //When backbutton is clicked, return to main activity
         if(v.getId() == R.id.backbutton){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-
+        //When submit button is clicked, calculate the auto loan payments
         if(v.getId() == R.id.submit){
-
+            //Check if all fields are filled in before calculating
             if (Arrays.stream(fields).noneMatch(n -> getTextEdit(n,this).isBlank())) {
                 double loanAmount = Double.parseDouble(getTextEdit(fields[0],this));
                 double loanARP = Double.parseDouble(getTextEdit(fields[1],this));
@@ -64,7 +74,9 @@ public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnCl
                     Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                //Create AutoLoanCalculation object and calculate loan payments
                 AutoLoanCalculation aCalc = new AutoLoanCalculation(loanAmount,loanARP,loanYears);
+                //Check if optional fields are filled in and set them
                 if(!getTextEdit(R.id.autoextraMonthlyAmount,this).isBlank() ){
                     aCalc.setExtraPayment(Double.parseDouble(getTextEdit(R.id.autoextraMonthlyAmount,this)));
                 }
@@ -75,17 +87,19 @@ public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnCl
                     aCalc.setDownPayment(Double.parseDouble(getTextEdit(R.id.autodownPayment,this)));
                 }
                 aCalc.calculateLoanPayments();
+                //Hide fields that are not needed and show the results
                 for(int f : fields){
                     removeField(f,this);
                 }
+                //Hide optional fields
                 for(int o : otherFields){
                     removeField(o,this);
                 }
-
+                //Show results
                 for(int r : resultFields){
                     showField(r,this);
                 }
-
+                //Disable submit button after calculation.
                 disableButton(R.id.submit,this);
                 String mPaymentsFormatted = NumberFormat.getCurrencyInstance().format(aCalc.getTotalInterestPaid());
                 setField(R.id.autoTotalInterestPaid,"Total Interest Paid: " + mPaymentsFormatted,this);
@@ -96,6 +110,7 @@ public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnCl
                 setField(R.id.autoMonthsToPayOff,"Months Till Payoff: " + aCalc.getMonthsTillPaidOff(),this);
                 HistoryManager.Instance().addHistoryItem(aCalc);
             } else {
+                //If not all fields are filled in, show a toast message
                 Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
             }
 

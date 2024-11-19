@@ -19,11 +19,24 @@ import edu.utsa.cs3443.fall_2024_helloworld.Model.Calculation;
  * @author Cole Frankland soc206
  */
 public class HistoryManager {
+    /**
+     * The constant MAX_SAVED_HISTORY.
+     */
     public static final int MAX_SAVED_HISTORY = 8;
+    /**
+     * The constant FILE_NAME.
+     */
     public static final String FILE_NAME = "history.bin";
+    /**
+     * The Tag.
+     */
     static String TAG = "HistoryManager";
+    /**
+     * The Instance.
+     */
     static HistoryManager _instance;
     private ArrayList<Calculation> historyItems;
+
     /***
      * Singleton instance of the HistoryManager
      * @return the instance of the HistoryManager
@@ -41,6 +54,7 @@ public class HistoryManager {
 
 
     private boolean isLoaded = false;
+
     /***
      * Get the history items
      * @return the history items
@@ -48,6 +62,7 @@ public class HistoryManager {
     public ArrayList<Calculation> getHistoryItems() {
         return this.historyItems;
     }
+
     /***
      * Add a history item to the history
      * @param item the history item to add
@@ -55,8 +70,10 @@ public class HistoryManager {
     public void addHistoryItem(Calculation item){
         historyItems.add(item);
     }
+
     /***
      * Load the history from the data directory
+     * @param dataDir the data dir
      */
     public void Load(File dataDir){
         if(isLoaded)
@@ -86,8 +103,10 @@ public class HistoryManager {
         }
 
     }
+
     /***
      * Save the history to the data directory
+     * @param dataDir the data dir
      */
     public void Save(File dataDir){
         File historyFile = new File(dataDir,FILE_NAME);

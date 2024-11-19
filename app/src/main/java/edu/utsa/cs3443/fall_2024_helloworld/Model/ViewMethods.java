@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import edu.utsa.cs3443.fall_2024_helloworld.R;
+
 /*** ViewMethods class to handle the view methods
  *
  * @author Wheeler
@@ -54,6 +55,7 @@ public class ViewMethods extends AppCompatActivity  {
         field.setText(d);
 
     }
+
     /***
      * Remove a field
      * @param fieldId the id of the field
@@ -64,6 +66,7 @@ public class ViewMethods extends AppCompatActivity  {
         EditText editText = activity.findViewById(fieldId);
         ((ViewGroup) editText.getParent()).removeView(editText);
     }
+
     /***
      * Show a field
      * @param fieldId the id of the field
@@ -74,6 +77,7 @@ public class ViewMethods extends AppCompatActivity  {
         EditText editText = activity.findViewById(fieldId);
         editText.setVisibility(VISIBLE);
     }
+
     /***
      * Hide a field
      * @param fieldId the id of the field
@@ -84,6 +88,7 @@ public class ViewMethods extends AppCompatActivity  {
         EditText editText = activity.findViewById(fieldId);
         editText.setVisibility(GONE);
     }
+
     /***
      * Set up a button
      * @param buttonID the id of the button
@@ -93,8 +98,9 @@ public class ViewMethods extends AppCompatActivity  {
         Button button = activity.findViewById(buttonID);
         button.setOnClickListener((View.OnClickListener) activity);
     }
+
     /***
-     * Add a button
+     * Add a button dynamically to the view
      * @param buttonName the name of the button
      * @param activity the activity
      */

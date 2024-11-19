@@ -11,6 +11,7 @@ import static edu.utsa.cs3443.fall_2024_helloworld.Model.ViewMethods.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 /*** MainActivity class to handle the main activity
  *
  * @author Wheeler
@@ -18,6 +19,9 @@ import java.util.Map;
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    /**
+     * The Button map to hold the buttons
+     */
     Map<String,Class<?>> buttonMap;
 
     /***
@@ -25,12 +29,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     public MainActivity() {
         super();
+        // Initialize the button map with the buttons and their respective classes
         buttonMap = new LinkedHashMap<>();
         buttonMap.put("Mortgage Calculator",MortgageCalcActivity.class);
         buttonMap.put("Auto Loan Calculator",AutoLoanCalcActivity.class);
         buttonMap.put("Interest Calculator",InterestCalcActivity.class);
         buttonMap.put("Recent Calculations",HistoryActivity.class);
     }
+
+    /**
+     * The Did splash to check if the splash screen has been shown
+     */
     static boolean didSplash = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_main);
         final View content = findViewById(R.id.linearLayout);
-        // This is garbage, and I'm not sure why we are even doing this.
+        // Splash screen delay to show the splash screen
         if(!didSplash) {
             didSplash = true;
             content.getViewTreeObserver().addOnPreDrawListener(
@@ -55,12 +64,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     });
         }
+        // Set up the buttons for main activity
         for (String cal: buttonMap.keySet()) {
             addButton(cal,this);
         }
     }
 
-    /** @noinspection SuspiciousMethodCalls*/
+    /**
+     * On click method to handle the button clicks
+     * @param v the view
+     */
     @Override
     public void onClick(View v) {
 
