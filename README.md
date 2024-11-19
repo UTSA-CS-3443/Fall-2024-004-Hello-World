@@ -27,6 +27,8 @@ https://github.com/UTSA-CS-3443/Fall-2024-004-Hello-World.git
 ```
 5. Choose the local directory where you want to store the cloned project
 6. Click Done
+   
+![2024-11-19 17-03-52](https://github.com/user-attachments/assets/7ee8d50b-b923-40a1-b3ac-61c201c79f91)
 
 
 ## Usage
