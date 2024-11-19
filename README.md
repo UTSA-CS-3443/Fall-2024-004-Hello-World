@@ -54,10 +54,14 @@ perform calculations using the calculators below in order to calculate what you 
    - Down payment
    - APR
    - Total cost of new car 
-   - Extra monthly amount 
+   - Extra monthly payment amount 
   
   Then it will provide the calculations results for the following:
-
+  - Total Interest Paid
+  - Total Cost of Loan
+  - Months to pay off Loan
+  - Total Monthly Payment
+  
 - Interest Calculator takes input for variables such as:
    - Loan Amount
    - Monthly Payment
