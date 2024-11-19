@@ -7,7 +7,7 @@ Android project for team: Hello World.
 - Java Development Kit (JDK) version 11 or higher.
 - Git installed on your computer.
 
-### Clone the Repository
+## Clone the Repository
 
 You can clone this repository using Git or directly from Android Studio:
 
