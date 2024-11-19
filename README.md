@@ -58,10 +58,15 @@ perform calculations using the calculators below in order to calculate what you 
   
   Then it will provide the calculations results for the following:
 
-- Interest
+- Interest Calculator takes input for variables such as:
+   - Loan Amount
+   - Monthly Payment
+   - APR
   
- 
-
+  Then it will provide the calculations results for the following:
+   - Total Interest Paid
+   - Total Cost of Loan
+   - Months to pay off Loan
 
 
 
