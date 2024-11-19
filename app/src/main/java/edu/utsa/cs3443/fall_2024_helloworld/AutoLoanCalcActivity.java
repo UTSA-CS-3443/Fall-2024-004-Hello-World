@@ -53,17 +53,17 @@ public class AutoLoanCalcActivity extends AppCompatActivity implements View.OnCl
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-        if (Arrays.stream(fields).anyMatch(n -> getTextEdit(n,this).isBlank())) {
-            Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            return;
-        }
+
         if(v.getId() == R.id.submit){
 
             if (Arrays.stream(fields).noneMatch(n -> getTextEdit(n,this).isBlank())) {
                 double loanAmount = Double.parseDouble(getTextEdit(fields[0],this));
                 double loanARP = Double.parseDouble(getTextEdit(fields[1],this));
                 double loanYears = Double.parseDouble(getTextEdit(fields[2],this));
-
+                if (Arrays.stream(fields).anyMatch(n -> getTextEdit(n,this).isBlank())) {
+                    Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 AutoLoanCalculation aCalc = new AutoLoanCalculation(loanAmount,loanARP,loanYears);
                 if(!getTextEdit(R.id.autoextraMonthlyAmount,this).isBlank() ){
                     aCalc.setExtraPayment(Double.parseDouble(getTextEdit(R.id.autoextraMonthlyAmount,this)));

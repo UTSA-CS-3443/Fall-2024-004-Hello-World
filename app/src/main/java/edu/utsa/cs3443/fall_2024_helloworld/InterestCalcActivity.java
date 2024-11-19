@@ -54,15 +54,17 @@ public class InterestCalcActivity extends AppCompatActivity implements View.OnCl
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-        if (Arrays.stream(fields).anyMatch(n -> getTextEdit(n,this).isBlank())) {
-            Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            return;
-        }
+
         if(v.getId() == R.id.submit){
+
             double loanAmount = Double.parseDouble(getTextEdit(fields[0],this));
             double  loanMonthlyPayments = Double.parseDouble(getTextEdit(fields[1],this));
             double loanARP = Double.parseDouble(getTextEdit(fields[2],this));
             InterestCalculation iCalc = new InterestCalculation(loanAmount,loanARP,loanMonthlyPayments);
+            if (Arrays.stream(fields).anyMatch(n -> getTextEdit(n,this).isBlank())) {
+                Toast.makeText(v.getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                return;
+            }
             iCalc.calculateInterest();
             for(int f : fields){
                 removeField(f,this);
