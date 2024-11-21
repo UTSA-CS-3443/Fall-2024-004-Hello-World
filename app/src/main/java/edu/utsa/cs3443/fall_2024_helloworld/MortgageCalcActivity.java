@@ -25,38 +25,8 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
      * The Result fields for the mortgage calculator
      */
     int[] resultFields = {R.id.totalInterestPaid,R.id.totalCostMortgage,R.id.totalMonthlyPayment,R.id.monthsToPayOff};
-    /**
-     * The Loan amount.
-     */
-    double loanAmount;
-    /**
-     * The Loan apr.
-     */
-    double loanAPR;
-    /**
-     * The Loan years.
-     */
-    double loanYears;
-    /**
-     * The Loan deposit.
-     */
-    double loanDeposit;
-    /**
-     * The Loan property tax.
-     */
-    double loanPropertyTax;
-    /**
-     * The Loan insurance.
-     */
-    double loanInsurance;
-    /**
-     * The Loan pmi.
-     */
-    double loanPMI;
-    /**
-     * The Loan extra payment.
-     */
-    double loanExtraPayment;
+
+
     /***
      * Method to handle the on create event
      * @param savedInstanceState the saved instance state
@@ -108,13 +78,13 @@ public class MortgageCalcActivity extends AppCompatActivity implements View.OnCl
                 return;
             }
             //get the values from the text fields
-            loanAmount = Double.parseDouble(getTextEdit(fields[0],this));
-            loanAPR = Double.parseDouble(getTextEdit(fields[1],this));
-            loanYears = Double.parseDouble(getTextEdit(fields[2],this));
-            loanDeposit = Double.parseDouble(getTextEdit(fields[3],this));
-            loanPropertyTax = Double.parseDouble(getTextEdit(fields[4],this));
-            loanInsurance = Double.parseDouble(getTextEdit(fields[5],this));
-            loanPMI = Double.parseDouble(getTextEdit(fields[6],this));
+            double loanAmount = Double.parseDouble(getTextEdit(fields[0],this));
+            double loanAPR = Double.parseDouble(getTextEdit(fields[1],this));
+            double loanYears = Double.parseDouble(getTextEdit(fields[2],this));
+            double loanDeposit = Double.parseDouble(getTextEdit(fields[3],this));
+            double loanPropertyTax = Double.parseDouble(getTextEdit(fields[4],this));
+            double loanInsurance = Double.parseDouble(getTextEdit(fields[5],this));
+            double loanPMI = Double.parseDouble(getTextEdit(fields[6],this));
             MortgageCalculation mCalc = new MortgageCalculation(loanAmount, loanAPR, loanYears,loanDeposit,loanPropertyTax,loanInsurance,loanPMI);
             if(!getTextEdit(R.id.extraPayments,this).isBlank() ){
                 mCalc.setExtraPayment(Double.parseDouble(getTextEdit(R.id.extraPayments,this)));

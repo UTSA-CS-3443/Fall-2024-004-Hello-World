@@ -13,7 +13,6 @@ import java.text.NumberFormat;
 import java.util.Arrays;
 
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
-import edu.utsa.cs3443.fall_2024_helloworld.Model.AutoLoanCalculation;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.InterestCalculation;
 
 /*** InterestCalcActivity class to handle the interest calculator activity
