@@ -7,7 +7,6 @@ import android.widget.Toast;
 import java.util.Arrays;
 import androidx.appcompat.app.AppCompatActivity;
 import java.text.NumberFormat;
-
 import edu.utsa.cs3443.fall_2024_helloworld.History.HistoryManager;
 import edu.utsa.cs3443.fall_2024_helloworld.Model.MortgageCalculation;
 
