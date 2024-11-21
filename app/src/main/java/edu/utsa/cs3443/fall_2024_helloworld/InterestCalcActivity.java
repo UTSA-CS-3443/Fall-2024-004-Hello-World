@@ -93,6 +93,7 @@ public class InterestCalcActivity extends AppCompatActivity implements View.OnCl
                 showField(r,this);
             }
             // Set the result fields to the calculated values
+            disableButton(R.id.submit,this);
             setField(R.id.interestMonthsToPayOff,"Months Till Payoff: " + iCalc.getMonthsTillPaidOff(),this);
             String mPaymentsFormatted = NumberFormat.getCurrencyInstance().format(iCalc.getTotalInterestPaid());
             setField(R.id.interestTotalPaid,"Total Interest Paid: " + mPaymentsFormatted,this);
